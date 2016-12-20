@@ -7,18 +7,17 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="5dp"
         android:gravity="center"
         android:text="石家庄"
         android:textSize="16sp"
         android:textColor="@color/black"
         android:background="@color/touming"
         android:id="@+id/pop1"/>
-    <view
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    </view>
+    <LinearLayout
+        android:layout_width="50dp"
+        android:layout_height="2dp"
+        android:layout_gravity="center"
+        android:background="@color/gray"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -29,6 +28,11 @@
         android:background="@color/touming"
         android:text="北京"
         android:id="@+id/pop2"/>
+    <LinearLayout
+        android:layout_width="50dp"
+        android:layout_height="2dp"
+        android:layout_gravity="center"
+        android:background="@color/gray"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -39,6 +43,11 @@
         android:textColor="@color/black"
         android:textSize="16sp"
         android:id="@+id/pop3"/>
+    <LinearLayout
+        android:layout_width="50dp"
+        android:layout_height="2dp"
+        android:layout_gravity="center"
+        android:background="@color/gray"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -49,5 +58,10 @@
         android:textColor="@color/black"
         android:textSize="16sp"
         android:id="@+id/pop4"/>
+    <LinearLayout
+        android:layout_width="50dp"
+        android:layout_height="2dp"
+        android:layout_gravity="center"
+        android:background="@color/gray"/>
 
 </LinearLayout>
