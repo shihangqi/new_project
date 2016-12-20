@@ -12,21 +12,21 @@
         android:orientation="vertical">
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="65dp"
-            android:orientation="horizontal">
+            android:layout_height="50dp"
+            android:background="@color/all">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="65dp"
-                android:background="#7cba84"
                 android:text="修改性别"
                 android:gravity="center"
+                android:textColor="@color/black"
                 android:textSize="30dp" />
 
             <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:background="@drawable/fanhui2"
+                android:background="@drawable/back"
                 android:id="@+id/genderB1"/>
         </RelativeLayout>
 
