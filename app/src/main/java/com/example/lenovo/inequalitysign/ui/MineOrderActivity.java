@@ -92,7 +92,8 @@ public class MineOrderActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent();
-                intent.setClass(MineOrderActivity.this,AlreadyLogin.class);
+                Utils.flag = 4;
+                intent.setClass(MineOrderActivity.this,MainActivity.class);
                 startActivity(intent);
             }
         });

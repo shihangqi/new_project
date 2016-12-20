@@ -18,7 +18,7 @@
             <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:src="@drawable/fanhui2"
+                android:src="@drawable/back"
                 android:background="#7cba84"
                 android:id="@+id/mine_profileB1"/>
 

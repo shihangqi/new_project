@@ -78,7 +78,8 @@ public class MineProfileActivity extends AppCompatActivity {
             switch (view.getId()){
                 case R.id.mine_profileB1:
                     Intent i = new Intent();
-                    i.setClass(MineProfileActivity.this,AlreadyLogin.class);
+                    Utils.flag = 4;
+                    i.setClass(MineProfileActivity.this,MainActivity.class);
                     startActivity(i);
                     break;
                 case R.id.mine_profileB2:

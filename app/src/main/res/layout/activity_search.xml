@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_marginTop="15dp"
-            android:src="@drawable/fanhui4"
+            android:src="@drawable/back"
             android:background="#b5b5b5"
             />
         <EditText
