@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Budenghao</string>
+    <string name="app_name">不等号</string>
     <string-array name="spinnerString">
         <item>Android</item>
         <item>IOS</item>
