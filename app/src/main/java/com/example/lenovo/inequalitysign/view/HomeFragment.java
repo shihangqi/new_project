@@ -37,6 +37,7 @@ import com.example.lenovo.inequalitysign.ui.DiningInformationActivity;
 import com.example.lenovo.inequalitysign.ui.MainActivity;
 import com.example.lenovo.inequalitysign.ui.SearchActivity;
 import com.mob.tools.gui.ViewPagerAdapter;
+import com.xys.libzxing.zxing.activity.CaptureActivity;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -155,6 +156,8 @@ public class HomeFragment extends Fragment {
                     break;
                 case R.id.btn_sys:
                     //实现扫二维码功能
+                    Intent openCameraIntent = new Intent(getActivity().getApplicationContext(), CaptureActivity.class);
+                    startActivityForResult(openCameraIntent, 0);
                     break;
                 case R.id.btn_search:
                     //跳转到搜寻界面
@@ -285,6 +288,7 @@ public class HomeFragment extends Fragment {
         setOnClick();
         init();
         setaddress();
+
     }
 
     private void viewpage() {
@@ -546,5 +550,18 @@ public class HomeFragment extends Fragment {
     public void onStop() {
         // TODO Auto-generated method stub
         super.onStop();
+    }
+
+
+    /*扫二维码功能*/
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == getActivity().RESULT_OK) {
+            Bundle bundle = data.getExtras();
+            String scanResult = bundle.getString("result");
+//            resultTextView.setText(scanResult);
+            Log.e("--------石航琪",scanResult);
+        }
     }
 }
