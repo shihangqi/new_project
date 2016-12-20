@@ -2,8 +2,13 @@ package com.example.lenovo.inequalitysign.ui;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.app.Notification;
+import android.content.Intent;
+import android.os.Message;
+import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -11,10 +16,21 @@ import android.widget.LinearLayout;
 import com.example.lenovo.inequalitysign.R;
 
 import com.example.lenovo.inequalitysign.Utils.Utils;
+import com.example.lenovo.inequalitysign.entity.Dining;
+import com.example.lenovo.inequalitysign.http.Httpss;
 import com.example.lenovo.inequalitysign.view.HomeFragment;
 import com.example.lenovo.inequalitysign.view.MineFragment;
 import com.example.lenovo.inequalitysign.view.NearbyFragment;
 import com.example.lenovo.inequalitysign.view.SquareFragment;
+
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.net.URL;
+import java.util.List;
+import java.util.logging.Handler;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,6 +43,8 @@ public class MainActivity extends AppCompatActivity {
     private NearbyFragment nf;
     private SquareFragment sf;
     private LinearLayout ll;
+    private List<Dining> ls;
+
 
     private View.OnClickListener mListener =new View.OnClickListener() {
         @Override
@@ -152,5 +170,24 @@ public class MainActivity extends AppCompatActivity {
         btn2 = (Button)findViewById(R.id.btn_fj);
         btn3 = (Button)findViewById(R.id.btn_wd);
         ll = (LinearLayout)findViewById(R.id.ll);
+    }
+
+
+
+    /*扫二维码功能*/
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK) {
+            Bundle bundle = data.getExtras();
+            final String scanResult = bundle.getString("result");
+//            resultTextView.setText(scanResult);
+            Log.e("--------石航琪",scanResult);
+            Intent intent = new Intent();
+            intent.setClass(MainActivity.this, DiningInformationActivity.class);
+            intent.putExtra("Context","HomeFragment");
+            intent.putExtra("Id",scanResult);
+            startActivity(intent);
+        }
     }
 }

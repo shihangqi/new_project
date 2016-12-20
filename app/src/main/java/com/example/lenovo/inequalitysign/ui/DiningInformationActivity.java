@@ -298,7 +298,7 @@ public class DiningInformationActivity extends AppCompatActivity {
             switch (view.getId()){
                 case R.id.back3:
                     String start = getIntent().getStringExtra("Context");
-                    if(start.equals("HomeFragment") ){
+                    if(start.equals("HomeFragment")){
                         Utils.flag =1;
                         Intent intent1 = new Intent(DiningInformationActivity.this,MainActivity.class);
                         startActivity(intent1);
@@ -396,7 +396,6 @@ public class DiningInformationActivity extends AppCompatActivity {
                 try {
 
                         JSONObject object = new JSONObject(s);
-                    Log.e("===========",s.toString());
                         nowtype1 = object.getString("now_type1");
                         nowtype2 = object.getString("now_type2");
                         nowtype3 = object.getString("now_type3");

@@ -17,14 +17,12 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.PopupWindow;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.lenovo.inequalitysign.R;
@@ -34,9 +32,7 @@ import com.example.lenovo.inequalitysign.entity.Dining;
 import com.example.lenovo.inequalitysign.http.Httpss;
 import com.example.lenovo.inequalitysign.ui.DiningActivity;
 import com.example.lenovo.inequalitysign.ui.DiningInformationActivity;
-import com.example.lenovo.inequalitysign.ui.MainActivity;
 import com.example.lenovo.inequalitysign.ui.SearchActivity;
-import com.mob.tools.gui.ViewPagerAdapter;
 import com.xys.libzxing.zxing.activity.CaptureActivity;
 
 import org.apache.http.NameValuePair;
@@ -44,8 +40,6 @@ import org.apache.http.message.BasicNameValuePair;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -280,8 +274,15 @@ public class HomeFragment extends Fragment {
     }
 
     @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+    }
+
+    @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
         setHasOptionsMenu(true);
         findView();
         viewpage();
@@ -289,6 +290,15 @@ public class HomeFragment extends Fragment {
         init();
         setaddress();
 
+        if(Utils.Flag == 0){
+            scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
+            scheduledExecutorService.scheduleWithFixedDelay(
+                    new ViewPageTask(),
+                    2,
+                    2,
+                    TimeUnit.SECONDS);
+            Utils.Flag = 1;
+        }
     }
 
     private void viewpage() {
@@ -520,12 +530,7 @@ public class HomeFragment extends Fragment {
     public void onStart() {
         // TODO Auto-generated method stub
         super.onStart();
-        scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
-        scheduledExecutorService.scheduleWithFixedDelay(
-                new ViewPageTask(),
-                2,
-                2,
-                TimeUnit.SECONDS);
+
     }
 
 
@@ -550,18 +555,5 @@ public class HomeFragment extends Fragment {
     public void onStop() {
         // TODO Auto-generated method stub
         super.onStop();
-    }
-
-
-    /*扫二维码功能*/
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == getActivity().RESULT_OK) {
-            Bundle bundle = data.getExtras();
-            String scanResult = bundle.getString("result");
-//            resultTextView.setText(scanResult);
-            Log.e("--------石航琪",scanResult);
-        }
     }
 }
