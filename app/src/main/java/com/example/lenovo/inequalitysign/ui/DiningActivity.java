@@ -72,7 +72,6 @@ public class DiningActivity extends Activity {
                     intent.setClass(DiningActivity.this, YytActivity.class);
                     intent.putExtra("Context","DiningActivity");
                     intent.putExtra("Id",ls.get(i).getShop_id());
-                    Log.e("SHOP_ID1",ls.get(i).getShop_id());
                     startActivityForResult(intent,i);
                 }
             });

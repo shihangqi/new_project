@@ -7,37 +7,36 @@
     android:layout_height="match_parent"
 
     tools:context="com.example.lenovo.inequalitysign.ui.DiningActivity">
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:background="@drawable/zzka"
+        android:layout_height="50dp"
+        android:background="@color/all"
         android:orientation="horizontal">
-        <Button
-            android:id="@+id/back1"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginLeft="10dp"
-            android:background="@drawable/zz"/>
-
         <Button
             android:id="@+id/ct"
             android:layout_width="100dp"
             android:layout_height="40dp"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="15dp"
-            android:background="@drawable/shape_theme1"
-            android:text="餐厅" />
+            android:background="@drawable/shape_theme"
+            android:text="餐厅"
+            android:layout_marginStart="19dp"
+            android:layout_alignTop="@+id/yyt"
+            android:layout_toEndOf="@+id/back1" />
 
         <Button
             android:id="@+id/yyt"
             android:layout_width="100dp"
             android:layout_height="40dp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginTop="15dp"
             android:background="@drawable/shape_theme"
-            android:text="营业厅" />
-    </LinearLayout>
+            android:text="营业厅"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="45dp" />
+        <Button
+            android:id="@+id/back1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/back"/>
+    </RelativeLayout>
 
     <ListView
             android:id="@+id/Lv"

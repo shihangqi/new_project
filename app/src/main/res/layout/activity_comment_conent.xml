@@ -7,24 +7,24 @@
     android:orientation="vertical"
 
     tools:context="com.example.lenovo.inequalitysign.ui.CommentConent">
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="#06c1ae">
-        <ImageButton
-            android:id="@+id/C_back"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:background="@drawable/back"
-            />
+        android:background="@color/all">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:textSize="25dp"
             android:textColor="#fff"
             android:gravity="center"
-            android:text="点评"/>
-    </LinearLayout>
+            android:text="评论"/>
+        <ImageButton
+            android:id="@+id/C_back"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/back"
+            />
+    </RelativeLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">

@@ -10,12 +10,12 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@drawable/zzka">
+        android:layout_height="50dp"
+        android:background="@color/all">
 
         <ImageButton
             android:id="@+id/IBtnClipBack"
-            android:layout_width="60dp"
+            android:layout_width="50dp"
             android:layout_height="match_parent"
             android:layout_gravity="center_vertical"
             android:background="@drawable/btn_back_white" />

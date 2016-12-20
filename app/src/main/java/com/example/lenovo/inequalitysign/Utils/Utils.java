@@ -15,4 +15,5 @@ public class Utils {
     public static String id = "1";
     public static String push_id = "";
     public static String now = "";
+    public static int Flag = 0;
 }
