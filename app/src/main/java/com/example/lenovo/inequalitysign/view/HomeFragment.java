@@ -167,7 +167,7 @@ public class HomeFragment extends Fragment {
                     if(window.isShowing()){
                         window.dismiss();
                     }else{
-                        window.showAsDropDown(tv_img);
+                        window.showAsDropDown(tv_img,15,0);
                     }
                     break;
                 case R.id.pop1:
