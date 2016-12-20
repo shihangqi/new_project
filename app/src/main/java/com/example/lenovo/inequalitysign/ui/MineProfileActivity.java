@@ -3,21 +3,18 @@ package com.example.lenovo.inequalitysign.ui;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.net.Uri;
+import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Base64;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -41,11 +38,10 @@ import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 
 public class MineProfileActivity extends AppCompatActivity {
-    private String u =Utils.USER_URL+ "getmessage";
+    private String u = Utils.USER_URL+ "getmessage";
     private ImageButton btn_back;
     private ImageButton btn1;
     private ImageButton btn2;
@@ -78,7 +74,8 @@ public class MineProfileActivity extends AppCompatActivity {
             switch (view.getId()){
                 case R.id.mine_profileB1:
                     Intent i = new Intent();
-                    i.setClass(MineProfileActivity.this,AlreadyLogin.class);
+                    Utils.flag = 4;
+                    i.setClass(MineProfileActivity.this,MainActivity.class);
                     startActivity(i);
                     break;
                 case R.id.mine_profileB2:
@@ -190,6 +187,10 @@ public class MineProfileActivity extends AppCompatActivity {
 
                     //此处后面可以将bitMap转为二进制上传后台网络
                     //......
+
+                    //请求并修改用户头像
+                    Httpss httpss = new Httpss();
+                    httpss.postFile(MineProfileActivity.this, cropImagePath);
 
                 }
                 break;
