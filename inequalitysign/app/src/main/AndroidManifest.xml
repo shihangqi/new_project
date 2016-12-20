@@ -61,6 +61,8 @@
         </activity>
         <activity android:name=".ui.RankActivity">
         </activity>
+        <activity android:name=".ui.AlreadyLogin">
+        </activity>
         <activity android:name=".ui.Gender">
         </activity>
         <activity android:name=".ui.Login_Wb">

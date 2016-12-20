@@ -8,7 +8,6 @@ import android.widget.Button;
 import android.widget.ImageButton;
 
 import com.example.lenovo.inequalitysign.R;
-import com.example.lenovo.inequalitysign.Utils.Utils;
 
 public class Login_Wb extends AppCompatActivity {
 
@@ -25,8 +24,7 @@ public class Login_Wb extends AppCompatActivity {
                     break;
                 case R.id.blogB2:
                     Intent intent = new Intent();
-                    Utils.flag =4;
-                    intent.setClass(Login_Wb.this,MainActivity.class);
+                    intent.setClass(Login_Wb.this,AlreadyLogin.class);
                     startActivity(intent);
                     break;
             }

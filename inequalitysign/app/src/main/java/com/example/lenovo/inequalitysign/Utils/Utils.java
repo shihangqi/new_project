@@ -12,7 +12,7 @@ public class Utils {
 
     public static int flag = 1;
     public static String city ="北京";
-    public static String id = "";
+    public static String id = "1";
     public static String push_id = "";
     public static String now = "";
 }

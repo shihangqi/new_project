@@ -72,8 +72,7 @@ public class LoginActivity extends AppCompatActivity {
                 Toast.makeText(LoginActivity.this,"登录成功",Toast.LENGTH_SHORT).show();
                 Utils.id = response_server;
                 Log.e("Utils.id",Utils.id);
-                Utils.flag =4;
-                Intent i = new Intent(LoginActivity.this,MainActivity.class);
+                Intent i = new Intent(LoginActivity.this,AlreadyLogin.class);
 
                 startActivity(i);
             }
@@ -150,7 +149,6 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        Utils.id = "";
         findView();
         setOnClick();
         init();

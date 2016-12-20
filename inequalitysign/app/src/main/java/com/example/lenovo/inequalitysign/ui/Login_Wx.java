@@ -8,7 +8,6 @@ import android.widget.Button;
 import android.widget.ImageButton;
 
 import com.example.lenovo.inequalitysign.R;
-import com.example.lenovo.inequalitysign.Utils.Utils;
 
 public class Login_Wx extends AppCompatActivity {
 
@@ -25,8 +24,7 @@ public class Login_Wx extends AppCompatActivity {
                     break;
                 case R.id.wechatB2:
                     Intent intent = new Intent();
-                    Utils.flag = 4;
-                    intent.setClass(Login_Wx.this,MainActivity.class);
+                    intent.setClass(Login_Wx.this,AlreadyLogin.class);
                     startActivity(intent);
                     break;
             }
