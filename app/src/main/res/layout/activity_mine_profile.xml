@@ -10,28 +10,25 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:orientation="horizontal"
-            android:background="#7cba84">
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:src="@drawable/back"
-                android:background="#7cba84"
-                android:id="@+id/mine_profileB1"/>
+            android:background="@color/all">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="65dp"
-                android:background="#7cba84"
                 android:text="个人资料"
                 android:gravity="center"
-                android:textSize="30dp"/>
-
-
-        </LinearLayout>
+                android:textColor="@color/white"
+                android:textSize="25dp"/>
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@drawable/back"
+                android:id="@+id/mine_profileB1"/>
+        </RelativeLayout>
 
         <LinearLayout
             android:layout_width="match_parent"

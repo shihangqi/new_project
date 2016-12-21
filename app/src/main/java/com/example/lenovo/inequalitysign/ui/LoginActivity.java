@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -52,8 +53,8 @@ public class LoginActivity extends AppCompatActivity {
     private Button get_cord;
     private Button btn_login;
     private TextView now;
-    private ImageButton btn_wb;
-    private ImageButton btn_wx;
+    private LinearLayout btn_wb;
+    private LinearLayout btn_wx;
     private String iPhone;
     private String iCord;
     private int time = 60;
@@ -190,8 +191,8 @@ public class LoginActivity extends AppCompatActivity {
         get_cord = (Button) findViewById(R.id.loginB2);
         now = (TextView) findViewById(R.id.now);
         btn_login = (Button)findViewById(R.id.loginB3);//登陆按钮
-        btn_wb = (ImageButton)findViewById(R.id.loginB4);//微博登陆
-        btn_wx = (ImageButton)findViewById(R.id.loginB5);//微信登陆
+        btn_wb = (LinearLayout)findViewById(R.id.loginB4);//微博登陆
+        btn_wx = (LinearLayout) findViewById(R.id.loginB5);//微信登陆
 
 
     }

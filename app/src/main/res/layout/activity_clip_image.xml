@@ -18,7 +18,7 @@
             android:layout_width="50dp"
             android:layout_height="match_parent"
             android:layout_gravity="center_vertical"
-            android:background="@drawable/btn_back_white" />
+            android:background="@drawable/back" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -27,7 +27,7 @@
             android:gravity="center"
             android:text="移动和缩放"
             android:textColor="#ffffff"
-            android:textSize="20sp" />
+            android:textSize="25sp" />
 
     </RelativeLayout>
     <!--圆形裁剪框示例
