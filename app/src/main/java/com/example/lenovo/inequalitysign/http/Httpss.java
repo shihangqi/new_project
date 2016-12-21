@@ -127,7 +127,8 @@ public class Httpss {
                 String name = object.getString("shop_name");
                 String address = object.getString("shop_address");
                 String  count = object.getString("count(shop.id)");
-                ls_Rank.add(new Rank(url,name,address,count));
+                String shop_id = object.getString("id");
+                ls_Rank.add(new Rank(url,name,address,count,shop_id));
             }
         } catch (JSONException e) {
             e.printStackTrace();
