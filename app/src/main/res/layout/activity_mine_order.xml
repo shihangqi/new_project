@@ -6,15 +6,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.lenovo.inequalitysign.ui.MineOrderActivity">
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="#06c1ae">
-        <ImageButton
-            android:id="@+id/order_back"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:background="@drawable/back"/>
+        android:background="@color/all">
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -22,7 +18,12 @@
             android:textColor="#fff"
             android:gravity="center"
             android:text="订单"/>
-    </LinearLayout>
+        <ImageButton
+            android:id="@+id/order_back"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/back"/>
+    </RelativeLayout>
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"

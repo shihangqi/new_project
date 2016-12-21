@@ -17,15 +17,14 @@
             android:layout_height="50dp"
             android:text="商家名称"
             android:id="@+id/name"
-            android:textSize="24dp"
+            android:textSize="25dp"
             android:layout_gravity="center"
             android:gravity="center"
             android:textColor="@color/white"/>
-        <Button
+        <ImageButton
             android:id="@+id/back3"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-
             android:background="@drawable/back"/>
     </RelativeLayout>
     <LinearLayout
@@ -187,7 +186,7 @@
             android:layout_width="160dp"
             android:layout_height="60dp"
             android:layout_marginTop="0dp"
-            android:layout_marginLeft="100dp"
+            android:layout_marginLeft="120dp"
             android:textSize="20dp"
             android:background="@drawable/zzkshape"
             android:text="立即取号"/>
@@ -197,11 +196,11 @@
         android:layout_height="60dp"
         >
         <TextView
-            android:layout_width="300dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/address"
             android:gravity="center"
-            android:layout_marginLeft="50dp"
+            android:layout_gravity="center"
             android:textSize="20dp"
             android:text="河北师范大学南二环东路辅路"/>
     </LinearLayout>

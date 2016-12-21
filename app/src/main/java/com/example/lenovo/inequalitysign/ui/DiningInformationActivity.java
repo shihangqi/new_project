@@ -44,7 +44,7 @@ import org.json.JSONObject;
 
 public class DiningInformationActivity extends AppCompatActivity {
 
-    private Button btn1;
+    private ImageButton btn1;
     private DisplayImageOptions options;
     private Button btn;
     private String all1="";
@@ -466,7 +466,7 @@ public class DiningInformationActivity extends AppCompatActivity {
     }
 
     private void finView() {
-        btn1=(Button)findViewById(R.id.back3);//退出按钮
+        btn1=(ImageButton)findViewById(R.id.back3);//退出按钮
         btn=(Button)findViewById(R.id.btn_qh);//取号按钮
         tv_name = (TextView)findViewById(R.id.name);
         add = (TextView)findViewById(R.id.address);

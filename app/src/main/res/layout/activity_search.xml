@@ -13,9 +13,8 @@
         <ImageButton
             android:layout_width="0dp"
             android:id="@+id/btn_back"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginTop="15dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.8"
             android:src="@drawable/back"
             android:background="#b5b5b5"
             />
@@ -23,15 +22,15 @@
             android:layout_width="0dp"
             android:id="@+id/et"
             android:layout_height="match_parent"
-            android:hint="请输入餐厅 营业厅"
-            android:layout_weight="3"/>
+            android:hint="请输入餐厅名、营业厅名"
+            android:layout_weight="4"/>
         <Button
             android:layout_width="0dp"
             android:id="@+id/btn_search"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="#b5b5b5"
-            android:text="搜索 "/>
+            android:text="搜索"/>
 
     </LinearLayout>
 
