@@ -7,7 +7,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.lenovo.inequalitysign.R;
@@ -66,6 +69,7 @@ public class MasonryAdapter   extends RecyclerView.Adapter<MasonryAdapter.Masonr
             super(itemView);
             imageView= (ImageView) itemView.findViewById(R.id.masonry_item_img );
             textView= (TextView) itemView.findViewById(R.id.masonry_item_title);
+
         }
 
     }
