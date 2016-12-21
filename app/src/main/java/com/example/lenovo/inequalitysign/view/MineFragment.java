@@ -3,6 +3,7 @@ package com.example.lenovo.inequalitysign.view;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -48,7 +49,6 @@ public class MineFragment extends Fragment {
                     Intent i = new Intent();
                     i.setClass(getActivity().getApplicationContext(), LoginActivity.class);
                     startActivity(i);
-                    btn.setText("推出当前账号");
                     break;
                 case R.id.mypageB2:
                     //如果 没登陆 调到登陆界面，登陆之后可以查看记录

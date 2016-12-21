@@ -417,6 +417,7 @@ public class DiningInformationActivity extends AppCompatActivity {
                                 what =3;
                             }
                         }
+                    Log.e("+++++++++++++++++",what+"");
 
 //
 

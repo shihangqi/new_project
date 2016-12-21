@@ -55,7 +55,7 @@ public class MineOrderActivity extends AppCompatActivity {
         type = in.getStringExtra("Type");
         num = in.getStringExtra("Num");
         Log.e("++++++",shop_id+"1");
-        if(shop_id == "null"){
+        if(shop_id == "null" || shop_id == null){
             new Thread(new Runnable() {
                 @Override
                 public void run() {
