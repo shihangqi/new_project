@@ -11,6 +11,7 @@
         android:adjustViewBounds="true"
 
         android:scaleType="centerCrop"/>
+
     <TextView
         android:id="@+id/masonry_item_title"
         android:layout_width="match_parent"
