@@ -9,15 +9,15 @@ public class Rank {
     private String shop_name;
     private String address;
     private String wait_num;
+    private String shop_id;
 
-    public Rank( String url, String shop_name, String address, String wait_num) {
-
+    public Rank(String url, String shop_name, String address, String wait_num, String shop_id) {
         this.url = url;
         this.shop_name = shop_name;
         this.address = address;
         this.wait_num = wait_num;
+        this.shop_id = shop_id;
     }
-
 
     public String getUrl() {
         return url;
@@ -49,5 +49,13 @@ public class Rank {
 
     public void setWait_num(String wait_num) {
         this.wait_num = wait_num;
+    }
+
+    public String getShop_id() {
+        return shop_id;
+    }
+
+    public void setShop_id(String shop_id) {
+        this.shop_id = shop_id;
     }
 }

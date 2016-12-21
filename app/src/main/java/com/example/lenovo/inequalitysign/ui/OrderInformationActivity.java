@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,7 +26,7 @@ import org.json.JSONObject;
 
 public class OrderInformationActivity extends AppCompatActivity {
     private String u = Utils.SHOP_URL+"join";
-    private Button btn1;
+    private ImageButton btn1;
     private Button btn;
     private String all;
     private String now;
@@ -102,7 +103,7 @@ public class OrderInformationActivity extends AppCompatActivity {
     }
 
     private void finView() {
-        btn1=(Button)findViewById(R.id.back4);//回退
+        btn1=(ImageButton)findViewById(R.id.back4);//回退
         btn=(Button)findViewById(R.id.btn_qxph);//取消排号
         tv = (TextView)findViewById(R.id.tv_name);//商家名称
         tv1 = (TextView)findViewById(R.id.tv_num);//取到的号

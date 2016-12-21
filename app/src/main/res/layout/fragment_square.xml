@@ -85,10 +85,12 @@
                 <ImageView
                     android:background="@drawable/xianshang"
                     android:layout_width="match_parent"
-                    android:layout_height="100dp" />
+                    android:scaleType="fitXY"
+                    android:layout_height="100dp"
+                    android:id="@+id/iv1"/>
                 <TextView
                     android:padding="10dp"
-                    android:id="@+id/TvSquareNo1"
+                    android:id="@+id/tv1"
                     android:gravity="center"
                     android:text="峨眉小镇"
                     android:layout_width="match_parent"
@@ -107,10 +109,12 @@
                     <ImageView
                         android:background="@drawable/tao2"
                         android:layout_width="match_parent"
+                        android:scaleType="fitXY"
+                        android:id="@+id/iv2"
                         android:layout_height="100dp" />
                     <TextView
                         android:padding="10dp"
-                        android:id="@+id/TvSquareNo2"
+                        android:id="@+id/tv2"
                         android:gravity="center"
                         android:text="额娘春饼"
                         android:layout_width="match_parent"
@@ -125,11 +129,13 @@
                     android:layout_height="wrap_content">
                     <ImageView
                         android:background="@drawable/zhuo"
+                        android:scaleType="fitXY"
+                        android:id="@+id/iv3"
                         android:layout_width="match_parent"
                         android:layout_height="100dp" />
                     <TextView
                         android:padding="10dp"
-                        android:id="@+id/TvSquareNo3"
+                        android:id="@+id/tv3"
                         android:gravity="center"
                         android:text="胖哥俩肉蟹煲"
                         android:layout_width="match_parent"

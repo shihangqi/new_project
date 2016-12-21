@@ -7,23 +7,23 @@
     android:orientation="vertical"
 
     tools:context="com.example.lenovo.inequalitysign.ui.RankActivity">
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="#06c1ae">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="25dp"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:text="周排行"/>
         <ImageButton
             android:id="@+id/rank_back"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:background="@drawable/back"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:textSize="25dp"
-            android:textColor="#fff"
-            android:gravity="center_vertical"
-            android:text="             周排行"/>
-    </LinearLayout>
+    </RelativeLayout>
     <!--<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"-->
                 <!--xmlns:tools="http://schemas.android.com/tools"-->
                 <!--android:layout_width="match_parent"-->

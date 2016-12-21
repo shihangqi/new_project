@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 
 import com.example.lenovo.inequalitysign.R;
@@ -29,7 +30,7 @@ public class DiningActivity extends Activity {
     private  String u = Utils.SHOP_URL+"line_dining";
     private String u1 = Utils.SHOP_URL+"line_hall";
 
-    private Button btn;
+    private ImageButton btn;
     private Button btn1;
     private Button btn2;
     private DiningAdapter adapter;
@@ -69,8 +70,8 @@ public class DiningActivity extends Activity {
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                     //设置点击事件
                     Intent intent = new Intent();
-                    intent.setClass(DiningActivity.this, YytActivity.class);
-                    intent.putExtra("Context","DiningActivity");
+                    intent.setClass(DiningActivity.this, DiningInformationActivity.class);
+                    intent.putExtra("Context","YytActivity");
                     intent.putExtra("Id",ls.get(i).getShop_id());
                     startActivityForResult(intent,i);
                 }
@@ -173,7 +174,7 @@ public class DiningActivity extends Activity {
 
     private void findView() {
         btn2=(Button)findViewById(R.id.yyt);
-        btn=(Button)findViewById(R.id.back1);
+        btn=(ImageButton)findViewById(R.id.back1);
         btn1 = (Button)findViewById(R.id.ct);
         lv = (ListView)findViewById(R.id.Lv);
     }

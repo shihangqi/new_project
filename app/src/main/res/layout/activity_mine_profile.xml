@@ -7,26 +7,30 @@
     android:orientation="vertical"
     android:background="#f0f0f0"
     tools:context="com.example.lenovo.inequalitysign.ui.MineProfileActivity">
-
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
         <RelativeLayout
-            android:background="#7cba84"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize">
-            <ImageButton
-                android:id="@+id/mine_profileB1"
-                android:layout_width="60dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_vertical"
-                android:background="@drawable/back" />
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:background="@color/all">
+
             <TextView
-                android:layout_centerInParent="true"
-                android:textSize="20sp"
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:text="个人资料"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="25dp"/>
+            <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="编辑资料"
-                android:gravity="center"
-                android:textColor="@android:color/white" />
+                android:background="@drawable/back"
+                android:id="@+id/mine_profileB1"/>
         </RelativeLayout>
+
         <RelativeLayout
             android:id="@+id/RlayProfileHead"
             android:background="@android:color/white"
@@ -147,6 +151,5 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@color/gray" />
-
-
+</LinearLayout>
 </LinearLayout>

@@ -22,6 +22,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.example.lenovo.inequalitysign.R;
@@ -43,7 +44,7 @@ import org.json.JSONObject;
 
 public class DiningInformationActivity extends AppCompatActivity {
 
-    private Button btn1;
+    private ImageButton btn1;
     private DisplayImageOptions options;
     private Button btn;
     private String all1="";
@@ -138,7 +139,13 @@ public class DiningInformationActivity extends AppCompatActivity {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
-                Log.e("++++++++",what+"");
+               if(content.equals("YytActivity")){
+                   type1.setText("服务类型");
+                   type2.setText("等待人数");
+               }else{
+                   type1.setText("餐桌类型");
+                   type2.setText("等待桌数");
+               }
                 switch (what){
                     case 1:
                         ib1 = (ImageButton)findViewById(R.id.ib1);
@@ -302,49 +309,69 @@ public class DiningInformationActivity extends AppCompatActivity {
                         Utils.flag =1;
                         Intent intent1 = new Intent(DiningInformationActivity.this,MainActivity.class);
                         startActivity(intent1);
-                    }else{
+                    }else if(start.equals("DiningActivity")){
                         Intent i=new Intent(DiningInformationActivity.this,DiningActivity.class);
                         startActivity(i);
+                    }else if(start.equals("RankActivity")){
+                        Intent i1=new Intent(DiningInformationActivity.this,RankActivity.class);
+                        startActivity(i1);
+                    }else if(start.equals("YytActivity")){
+                        Intent i=new Intent(DiningInformationActivity.this,DiningActivity.class);
+                        startActivity(i);
+                    }else if(start.equals("SquareFragment")){
+                        Utils.flag =2;
+                        Intent i=new Intent(DiningInformationActivity.this,MainActivity.class);
+                        startActivity(i);
+                    } else{
+                        Toast.makeText(DiningInformationActivity.this,content,Toast.LENGTH_SHORT).show();
                     }
                     break;
                 case R.id.btn_qh:
-                    if(state == 0){
-                        AlertDialog.Builder adb = new AlertDialog.Builder(DiningInformationActivity.this);
-                        adb.setTitle("温馨提示");
-                        adb.setTitle("请选择业务类型");
-                        adb.setNegativeButton("取消", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                finish();
-                            }
-                        });
-                        adb.setPositiveButton("确定",null);
-                        adb.create();
-                        adb.show();
+                    if(Utils.id==""){
+                        Intent i = new Intent();
+                        i.setClass(DiningInformationActivity.this,LoginActivity.class);
+                        startActivity(i);
                     }else{
+                        if(state == 0){
+                            AlertDialog.Builder adb = new AlertDialog.Builder(DiningInformationActivity.this);
+                            adb.setTitle("温馨提示");
+                            adb.setTitle("请选择业务类型");
+                            adb.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    finish();
+                                }
+                            });
+                            adb.setPositiveButton("确定",null);
+                            adb.create();
+                            adb.show();
+                        }else{
 
-                        new Thread(new Runnable() {
+                            new Thread(new Runnable() {
 
-                            @Override
-                            public void run() {
-                                Httpss http = new Httpss();
-                                NameValuePair pair = new BasicNameValuePair("user_id", Utils.id);
-                                NameValuePair pair1 = new BasicNameValuePair("shop_id",getIntent().getStringExtra("Id"));
-                                NameValuePair pair2 = new BasicNameValuePair("type",type+"");
-                                s = http.setAndGet(Utils.SHOP_URL+"join",pair1,pair2,pair);
-                                Message msg = new Message();
-                                handler.sendMessage(msg);
-                            }
-                        }).start();//new Thread
+                                @Override
+                                public void run() {
+                                    Httpss http = new Httpss();
+                                    NameValuePair pair = new BasicNameValuePair("user_id", Utils.id);
+                                    NameValuePair pair1 = new BasicNameValuePair("shop_id",getIntent().getStringExtra("Id"));
+                                    NameValuePair pair2 = new BasicNameValuePair("type",type+"");
+                                    s = http.setAndGet(Utils.SHOP_URL+"join",pair1,pair2,pair);
+                                    Message msg = new Message();
+                                    handler.sendMessage(msg);
+                                }
+                            }).start();//new Thread
 
 
-                    }//else
+                        }//else
+
+                    }
 
                     break;
             }
         }
     };
-
+    private TextView type1;
+    private TextView type2;
 
 
     @Override
@@ -439,7 +466,7 @@ public class DiningInformationActivity extends AppCompatActivity {
     }
 
     private void finView() {
-        btn1=(Button)findViewById(R.id.back3);//退出按钮
+        btn1=(ImageButton)findViewById(R.id.back3);//退出按钮
         btn=(Button)findViewById(R.id.btn_qh);//取号按钮
         tv_name = (TextView)findViewById(R.id.name);
         add = (TextView)findViewById(R.id.address);
@@ -453,6 +480,7 @@ public class DiningInformationActivity extends AppCompatActivity {
         ll1 = (LinearLayout)findViewById(R.id.ll1);
         ll2 = (LinearLayout)findViewById(R.id.ll2);
         ll3 = (LinearLayout)findViewById(R.id.ll3);
-
+        type1 = (TextView)findViewById(R.id.type_name1);
+        type2 = (TextView)findViewById(R.id.type_name2);
     }
 }
