@@ -236,4 +236,43 @@ public class Httpss {
         }
     }
 
+    /**
+     * 文件上传
+     * @param context
+     * @param localFile
+     */
+    public void postScene(final Context context, String localFile, String content) {
+        File file = new File(localFile);
+        if (file.exists() && file.length() > 0) {
+            AsyncHttpClient client = new AsyncHttpClient();
+            RequestParams params = new RequestParams();
+            try {
+                params.put("scene_url", file);
+                params.put("scene_content", content);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+            client.post(Utils.urlScene, params, new AsyncHttpResponseHandler() {
+                @Override
+                public void onSuccess(int i, Header[] headers, byte[] bytes) {
+                    String result = new String(bytes);
+                    Log.e("bytes", result);
+                    if (result.equals("uploadok")) {
+                        Toast.makeText(context, "上传成功", Toast.LENGTH_LONG).show();
+                    } else if (result.equals("uploadfail")) {
+                        Toast.makeText(context, "上传失败", Toast.LENGTH_LONG).show();
+                    }
+
+                }
+
+                @Override
+                public void onFailure(int i, Header[] headers, byte[] bytes, Throwable throwable) {
+                    Toast.makeText(context, "上传失败", Toast.LENGTH_LONG).show();
+                }
+            });
+        } else {
+            Toast.makeText(context, "图片不支持", Toast.LENGTH_LONG).show();
+        }
+    }
+
 }
