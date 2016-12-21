@@ -36,7 +36,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/sy"/>
+                android:background="@drawable/sy2"/>
             <Button
                 android:id="@+id/btn_gc"
                 android:layout_width="0dp"
