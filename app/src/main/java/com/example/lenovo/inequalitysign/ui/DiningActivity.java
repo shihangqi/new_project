@@ -70,8 +70,8 @@ public class DiningActivity extends Activity {
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                     //设置点击事件
                     Intent intent = new Intent();
-                    intent.setClass(DiningActivity.this, YytActivity.class);
-                    intent.putExtra("Context","DiningActivity");
+                    intent.setClass(DiningActivity.this, DiningInformationActivity.class);
+                    intent.putExtra("Context","YytActivity");
                     intent.putExtra("Id",ls.get(i).getShop_id());
                     startActivityForResult(intent,i);
                 }

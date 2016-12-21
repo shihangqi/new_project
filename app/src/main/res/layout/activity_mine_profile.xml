@@ -7,21 +7,12 @@
     android:orientation="vertical"
     android:background="#f0f0f0"
     tools:context="com.example.lenovo.inequalitysign.ui.MineProfileActivity">
-<<<<<<< .mine
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
         <RelativeLayout
-=======
-
-        <RelativeLayout
-            android:background="#7cba84"
-
-
->>>>>>> .theirs
             android:layout_width="match_parent"
-<<<<<<< .mine
             android:layout_height="50dp"
             android:orientation="horizontal"
             android:background="@color/all">
@@ -30,28 +21,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="65dp"
                 android:text="个人资料"
-
-
-
-
-
-=======
-            android:layout_height="?attr/actionBarSize">
-            <ImageButton
-                android:id="@+id/mine_profileB1"
-                android:layout_width="60dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_vertical"
-                android:background="@drawable/back" />
-            <TextView
-                android:layout_centerInParent="true"
-                android:textSize="20sp"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="编辑资料"
->>>>>>> .theirs
                 android:gravity="center"
-<<<<<<< .mine
                 android:textColor="@color/white"
                 android:textSize="25dp"/>
             <ImageButton
@@ -61,19 +31,12 @@
                 android:id="@+id/mine_profileB1"/>
         </RelativeLayout>
 
-        <LinearLayout
-=======
-                android:textColor="@android:color/white" />
-        </RelativeLayout>
         <RelativeLayout
             android:id="@+id/RlayProfileHead"
             android:background="@android:color/white"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:padding="10dp"
-
-
->>>>>>> .theirs
             android:layout_width="match_parent"
             android:layout_height="85dp">
             <TextView
@@ -188,6 +151,5 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@color/gray" />
-
-
+</LinearLayout>
 </LinearLayout>

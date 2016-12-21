@@ -29,7 +29,7 @@ tools:context="com.example.lenovo.inequalitysign.ui.MainActivity">
             android:textColor="@color/black"
             android:drawableRight="@drawable/xiala1"
             android:gravity="center"
-            android:paddingLeft="10dp"
+            android:paddingLeft="5dp"
             />
         <Button
             android:id="@+id/btn_search"

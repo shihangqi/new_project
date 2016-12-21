@@ -19,6 +19,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:background="@color/all"
+                android:textColor="@color/white"
                 android:text="我的"
                 android:gravity="center"
                 android:textSize="30dp"/>
@@ -47,6 +48,7 @@
                 android:text="登    录"
                 android:gravity="center"
                 android:id="@+id/mypageB1"
+                android:textColor="@color/white"
                 android:background="@color/all"
                 android:textSize="20dp"/>
             <TextView
