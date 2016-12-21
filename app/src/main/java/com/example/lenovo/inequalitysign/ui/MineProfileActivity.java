@@ -15,6 +15,7 @@ import android.os.Message;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,6 +28,7 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.example.lenovo.inequalitysign.R;
+import com.example.lenovo.inequalitysign.Utils.CircleImageView;
 import com.example.lenovo.inequalitysign.Utils.Utils;
 import com.example.lenovo.inequalitysign.http.Httpss;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
@@ -52,7 +54,7 @@ public class MineProfileActivity extends AppCompatActivity {
     private String sex;
     private String name;
     private String url;
-    private ImageView iv;
+    private CircleImageView iv;
     private DisplayImageOptions options;
     private TextView tv_name;
     private TextView tv_sex;
@@ -290,6 +292,7 @@ public class MineProfileActivity extends AppCompatActivity {
                    name = object.getString("name");
                    sex = object.getString("sex");
                    url = object.getString("img");
+                   Log.e("URL",url);
                    Message msg =new Message();
                    mHandler.sendMessage(msg);
                } catch (JSONException e) {
@@ -322,7 +325,7 @@ public class MineProfileActivity extends AppCompatActivity {
     private void findView() {
         btn_back = (ImageButton)findViewById(R.id.mine_profileB1);//回退按钮
         btn1 = (ImageButton)findViewById(R.id.mine_profileB2);//设置头像
-        iv = (ImageView)findViewById(R.id.iv);
+        iv = (CircleImageView)findViewById(R.id.iv);
         btn2  = (ImageButton)findViewById(R.id.mine_profileB3);//设置昵称
         btn3 = (ImageButton)findViewById(R.id.mine_profileB4);//设置性别
         tv_name = (TextView)findViewById(R.id.tv_name);

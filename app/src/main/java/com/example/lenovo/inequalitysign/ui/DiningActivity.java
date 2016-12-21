@@ -50,7 +50,7 @@ public class DiningActivity extends Activity {
                     intent.setClass(DiningActivity.this, DiningInformationActivity.class);
                     intent.putExtra("Context","DiningActivity");
                     intent.putExtra("Name",ls.get(i).getName());
-                    intent.putExtra("Url",ls.get(i).getUrl());
+
                     intent.putExtra("Id",ls.get(i).getShop_id());
 
                     startActivityForResult(intent,i);
@@ -72,6 +72,7 @@ public class DiningActivity extends Activity {
                     Intent intent = new Intent();
                     intent.setClass(DiningActivity.this, DiningInformationActivity.class);
                     intent.putExtra("Context","YytActivity");
+                    intent.putExtra("Name",ls.get(i).getName());
                     intent.putExtra("Id",ls.get(i).getShop_id());
                     startActivityForResult(intent,i);
                 }

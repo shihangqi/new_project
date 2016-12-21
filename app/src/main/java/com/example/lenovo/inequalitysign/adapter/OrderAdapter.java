@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,27 +43,7 @@ public class OrderAdapter extends BaseAdapter {
     private String shop_id="";
     private String type="";
     private String num="";
-    private View.OnClickListener mListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            switch (view.getId()){
-                case R.id.mine_orderB2:
-                    Intent ii = new Intent();
-                    ii.setClass(context, MineOrderActivity.class);
-                    ii.putExtra("Id",shop_id);
-                    ii.putExtra("Type",type);
-                    ii.putExtra("Num",num);
-                    context.startActivity(ii);
-                    break;
-                case R.id.mine_orderB3:
-                    Intent i = new Intent();
-                    i.setClass(context,DiningInformationActivity.class);
-                    i.putExtra("Id",shop_id);
-                    context.startActivity(i);
-                    break;
-            }
-        }
-    };
+    private int i1;
 
     public OrderAdapter(Context context,List<Order> ls) {
         this.ls = ls;
@@ -96,6 +77,7 @@ public class OrderAdapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
+        i1 = i;
         if(view == null){
             view = LayoutInflater.from(context).inflate(R.layout.order_item,null);
         }
@@ -112,7 +94,26 @@ public class OrderAdapter extends BaseAdapter {
         tv_name.setText(order.getTitle());
         tv_num.setText(order.getNum());
         ImageLoader.getInstance().displayImage(order.getUrl(),tv_url);
-        if(order.getStatus() == "1"){
+        btn_delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               ls.remove(ls.size()-i1);
+                Log.e("ssss",ls.size()+"");
+                Log.e("SSSSSSSSSSSSSSSSSS",i1+"");
+                notifyDataSetChanged();
+            }
+        });
+        again.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent();
+                i.setClass(context,DiningInformationActivity.class);
+                i.putExtra("Id",shop_id);
+                context.startActivity(i);
+            }
+        });
+        Log.e("Status",order.getStatus());
+        if("1".equals(order.getStatus())){
             status.setText("未消费");
         }else{
             status.setText("已消费");
