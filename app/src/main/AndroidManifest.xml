@@ -101,8 +101,6 @@
             android:value="Channel ID">
         </meta-data>
 
-        <activity android:name=".ui.YytActivity">
-        </activity>
     </application>
 
 </manifest>

@@ -72,9 +72,10 @@ public class LoginActivity extends AppCompatActivity {
             }else{
                 Toast.makeText(LoginActivity.this,"登录成功",Toast.LENGTH_SHORT).show();
                 Utils.id = response_server;
-                Utils.flag = 4;
                 Log.e("Utils.id",Utils.id);
+                Utils.flag = 4;
                 Intent i = new Intent(LoginActivity.this,MainActivity.class);
+
                 startActivity(i);
             }
         }
