@@ -154,6 +154,7 @@ public class DiningInformationActivity extends AppCompatActivity {
                             public void onClick(View view) {
                                 ib1.setImageResource(R.drawable.xuanzhong);
                                 type = 1;
+                                state =1;
                             }
                         });
                         Log.e("+=====",type_name1+"111");
@@ -332,6 +333,7 @@ public class DiningInformationActivity extends AppCompatActivity {
                         i.setClass(DiningInformationActivity.this,LoginActivity.class);
                         startActivity(i);
                     }else{
+
                         if(state == 0){
                             AlertDialog.Builder adb = new AlertDialog.Builder(DiningInformationActivity.this);
                             adb.setTitle("温馨提示");
