@@ -39,7 +39,7 @@ public class MineOrderActivity extends AppCompatActivity {
             super.handleMessage(msg);
             OrderAdapter adapter = new OrderAdapter(MineOrderActivity.this,ls);
             SharedPreferences spf = getSharedPreferences("Count", Context.MODE_APPEND);
-            add = spf.getString("Address","");
+            add = spf.getString("address","");
             lv.setAdapter(adapter);
             lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override

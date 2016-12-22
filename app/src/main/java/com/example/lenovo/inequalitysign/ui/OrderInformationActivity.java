@@ -7,10 +7,13 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutCompat;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -69,7 +72,7 @@ public class OrderInformationActivity extends AppCompatActivity {
 //    };
 
 
-
+    private EditText edittext;
     private View.OnClickListener mListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
@@ -107,8 +110,11 @@ public class OrderInformationActivity extends AppCompatActivity {
                     break;
                 case R.id.clock:
                     AlertDialog.Builder adb = new AlertDialog.Builder(OrderInformationActivity.this);
-                    adb.setTitle("请设置闹钟,");
-                    final EditText edittext = new EditText(OrderInformationActivity.this);
+                    adb.setTitle("请设置闹钟距离您？号响应");
+                    edittext = new EditText(OrderInformationActivity.this);
+                    LinearLayoutCompat.LayoutParams params = new LinearLayoutCompat.LayoutParams(50,20);
+
+                    edittext.setLayoutParams(params);
                     adb.setView(edittext);
                     adb.setPositiveButton("确定", new DialogInterface.OnClickListener() {
                         @Override
@@ -159,6 +165,7 @@ public class OrderInformationActivity extends AppCompatActivity {
         Intent i = getIntent();
 //        shop_id = i.getStringExtra("Id");
         Utils.now = spf.getString("Now","");
+        Log.e("AAAAAAAAAAaa",Utils.now);
         all = i.getStringExtra("Mine");
         add = i.getStringExtra("Address");
         name = i.getStringExtra("Name");
