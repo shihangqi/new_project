@@ -29,7 +29,7 @@ tools:context="com.example.lenovo.inequalitysign.ui.MainActivity">
             android:textColor="@color/black"
             android:drawableRight="@drawable/xiala1"
             android:gravity="center"
-            android:paddingLeft="5dp"
+            android:paddingLeft="2dp"
             />
         <Button
             android:id="@+id/btn_search"
@@ -150,7 +150,7 @@ tools:context="com.example.lenovo.inequalitysign.ui.MainActivity">
         <TextView
 
             android:layout_width="150dp"
-            android:layout_height="match_parent"
+            android:layout_height="30dp"
             android:background="@drawable/cnxh"/>
     </LinearLayout>
     <LinearLayout

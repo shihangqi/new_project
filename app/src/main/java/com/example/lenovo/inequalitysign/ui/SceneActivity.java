@@ -4,6 +4,7 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -19,6 +20,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.text.TextUtils;
 import android.util.Base64;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -26,6 +28,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
@@ -53,10 +56,22 @@ public class SceneActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private ImageButton btn_back;
     private ImageButton btn_menu;
+    private LinearLayout mLlay;
     private Handler mHandler = new Handler(){
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
+            View itemView = LayoutInflater.from(SceneActivity.this).inflate(R.layout.masonry_item, null);
+            mLlay = (LinearLayout) itemView.findViewById(R.id.Llay);
+
+            //固定瀑布流的图片宽度
+            Resources resources = SceneActivity.this.getResources();
+            DisplayMetrics dm = resources.getDisplayMetrics();
+            int screeWidth = dm.widthPixels;
+            int width = (screeWidth - 5) / 2;
+            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(width, ViewGroup.LayoutParams.WRAP_CONTENT);
+            mLlay.setLayoutParams(lp);
+
             MasonryAdapter adapter = new MasonryAdapter(ls);
             recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
             //设置adapter

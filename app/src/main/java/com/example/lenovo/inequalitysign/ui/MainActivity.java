@@ -4,6 +4,7 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.app.Notification;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Message;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
@@ -58,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
                   if(hf == null){
                       hf = new HomeFragment();
                   }
+                    changeimg(1);
                     ft.replace(R.id.container,hf);
                     break;
                 case R.id.btn_gc://广场
@@ -65,18 +67,21 @@ public class MainActivity extends AppCompatActivity {
                         sf = new SquareFragment();
 
                     }
+                    changeimg(2);
                     ft.replace(R.id.container,sf);
                     break;
                 case R.id.btn_fj:
                     if(nf == null){
                         nf = new NearbyFragment();
                     }
+                    changeimg(3);
                     ft.replace(R.id.container,nf);
                     break;
                 case R.id.btn_wd:
                     if(mf == null){
                         mf = new MineFragment();
                     }
+                    changeimg(4);
                     ft.replace(R.id.container,mf);
                     break;
             }//switch
@@ -94,16 +99,21 @@ public class MainActivity extends AppCompatActivity {
         setOnClick();
         switch(Utils.flag){//实现从Fragment跳转到Fragment
             case 1:
+                changeimg(1);
                 setDefaultPage();
                 break;
             case 2:
+                changeimg(2);
                 setSquare();
                 break;
             case 3:
+                changeimg(3);
                 setNear();
                 break;
             case 4:
+                changeimg(4);
                 setMine();
+                break;
         }
 
     }
@@ -188,6 +198,26 @@ public class MainActivity extends AppCompatActivity {
             intent.putExtra("Context","HomeFragment");
             intent.putExtra("Id",scanResult);
             startActivity(intent);
+        }
+    }
+    private void changeimg(int i){
+        btn.setBackground(this.getResources().getDrawable(R.drawable.sy));
+        btn1.setBackground(this.getResources().getDrawable(R.drawable.gc));
+        btn2.setBackground(this.getResources().getDrawable(R.drawable.fj));
+        btn3.setBackground(this.getResources().getDrawable(R.drawable.wd));
+        switch (i){
+            case 1:
+                btn.setBackground(this.getResources().getDrawable(R.drawable.sy2));
+                break;
+            case 2:
+                btn1.setBackground(this.getResources().getDrawable(R.drawable.gc2));
+                break;
+            case 3:
+                btn2.setBackground(this.getResources().getDrawable(R.drawable.fj2));
+                break;
+            case 4:
+                btn3.setBackground(this.getResources().getDrawable(R.drawable.wd2));
+                break;
         }
     }
 }

@@ -13,39 +13,50 @@
     android:layout_width="match_parent"
     android:layout_height="0dp"
     android:layout_weight="9"
-    android:id="@+id/container"></FrameLayout>
+    android:id="@+id/container">
 
+</FrameLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.2"
+            android:background="@color/gray">
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="10">
+            <Button
+                android:id="@+id/btn_sy"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/sy2"/>
+            <Button
+                android:id="@+id/btn_gc"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/gc"/>
+            <Button
+                android:id="@+id/btn_fj"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/fj"
+                />
+            <Button
+                android:id="@+id/btn_wd"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/wd"/>
 
-        android:layout_weight="1">
-        <Button
-            android:id="@+id/btn_sy"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/sy"/>
-        <Button
-            android:id="@+id/btn_gc"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/gc"/>
-        <Button
-            android:id="@+id/btn_fj"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/fj"
-            />
-        <Button
-            android:id="@+id/btn_wd"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/wd"/>
-
-
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>
