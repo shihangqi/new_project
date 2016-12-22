@@ -237,7 +237,7 @@ public class Httpss {
     }
 
     /**
-     * 文件上传
+     * 实景和评论上传
      * @param context
      * @param localFile
      */
