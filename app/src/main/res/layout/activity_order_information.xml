@@ -123,7 +123,7 @@
             android:layout_height="match_parent"
             android:layout_marginRight="20dp"
             android:text="设置闹钟提醒"
-
+            android:id="@+id/clock"
             android:background="@drawable/zzkshape"
             android:textSize="15dp"/>
     </LinearLayout>

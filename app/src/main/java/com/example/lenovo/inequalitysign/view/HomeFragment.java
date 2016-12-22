@@ -32,6 +32,7 @@ import com.example.lenovo.inequalitysign.entity.Dining;
 import com.example.lenovo.inequalitysign.http.Httpss;
 import com.example.lenovo.inequalitysign.ui.DiningActivity;
 import com.example.lenovo.inequalitysign.ui.DiningInformationActivity;
+import com.example.lenovo.inequalitysign.ui.MainActivity;
 import com.example.lenovo.inequalitysign.ui.SearchActivity;
 import com.xys.libzxing.zxing.activity.CaptureActivity;
 
@@ -261,6 +262,24 @@ public class HomeFragment extends Fragment {
             }
         }
     };
+
+    /*扫二维码功能*/
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        Log.e("------------","1");
+        if (resultCode == getActivity().RESULT_OK) {
+            Bundle bundle = data.getExtras();
+            final String scanResult = bundle.getString("result");
+//            resultTextView.setText(scanResult);
+            Log.e("--------石航琪",scanResult);
+            Intent intent = new Intent();
+            intent.setClass(getActivity().getApplicationContext(), DiningInformationActivity.class);
+            intent.putExtra("Context","HomeFragment");
+            intent.putExtra("Id",scanResult);
+            startActivity(intent);
+        }
+    }
 
 
 

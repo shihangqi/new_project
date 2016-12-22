@@ -184,22 +184,6 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    /*扫二维码功能*/
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == RESULT_OK) {
-            Bundle bundle = data.getExtras();
-            final String scanResult = bundle.getString("result");
-//            resultTextView.setText(scanResult);
-            Log.e("--------石航琪",scanResult);
-            Intent intent = new Intent();
-            intent.setClass(MainActivity.this, DiningInformationActivity.class);
-            intent.putExtra("Context","HomeFragment");
-            intent.putExtra("Id",scanResult);
-            startActivity(intent);
-        }
-    }
     private void changeimg(int i){
         btn.setBackground(this.getResources().getDrawable(R.drawable.sy));
         btn1.setBackground(this.getResources().getDrawable(R.drawable.gc));

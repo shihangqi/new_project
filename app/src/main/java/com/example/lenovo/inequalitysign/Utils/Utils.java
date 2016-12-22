@@ -15,6 +15,7 @@ public class Utils {
     public static String city ="北京";
     public static String id = "";
     public static String push_id = "";
-    public static String now = "";
+    public static String now = "";//代表当前号
+    public static String num="";//代表还需等待
     public static int Flag = 0;
 }

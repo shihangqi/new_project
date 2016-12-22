@@ -53,7 +53,9 @@ public class OrderAdapter extends BaseAdapter {
             super.handleMessage(msg);
             if(message.equals("ok")){
                 Toast.makeText(context,"删除订单成功",Toast.LENGTH_SHORT).show();
+                Log.e("index",ls.size()+"");
                 ls.remove(i1);
+                Log.e("index",i1+"");
                 notifyDataSetChanged();
             }else{
                 Toast.makeText(context,"删除订单失败",Toast.LENGTH_SHORT).show();
@@ -61,6 +63,7 @@ public class OrderAdapter extends BaseAdapter {
         }
     };
     private  int i1;
+    private int i2;
 
     public OrderAdapter(Context context,List<Order> ls) {
         this.ls = ls;
@@ -147,9 +150,12 @@ public class OrderAdapter extends BaseAdapter {
         again.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                i2 = i;
                 Intent i = new Intent();
                 i.setClass(context,DiningInformationActivity.class);
-                i.putExtra("Id",shop_id);
+                i.putExtra("Id",ls.get(i2).getShop_id());
+                Log.e("Shop_id",shop_id+"shop_id");
+                i.putExtra("Context","MineOrderActivity");
                 context.startActivity(i);
             }
         });
