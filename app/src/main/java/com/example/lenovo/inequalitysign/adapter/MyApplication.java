@@ -3,7 +3,12 @@ package com.example.lenovo.inequalitysign.adapter;
 import android.app.Application;
 import android.app.Notification;
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.media.Ringtone;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.example.lenovo.inequalitysign.Utils.Utils;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
@@ -19,6 +24,8 @@ import com.umeng.message.entity.UMessage;
  * Created by ff on 2016/11/29.
  */
 public class MyApplication extends Application {
+    private Ringtone r;
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -43,8 +50,34 @@ public class MyApplication extends Application {
         UmengMessageHandler messageHandler = new UmengMessageHandler(){
             @Override
             public Notification getNotification(Context var1, UMessage var2) {
-
                 Utils.now = var2.text.substring(var2.text.indexOf("到")+1,var2.text.indexOf("号"));
+                SharedPreferences spf1 =getSharedPreferences("Count",Context.MODE_APPEND);
+                SharedPreferences.Editor editor = spf1.edit();
+                editor.putString("Now",Utils.now);
+                editor.commit();
+                Log.e("String",var2.text.toString());
+                if(var2.text.toString().equals("您所预定的号码已被叫号！请迅速赶往前台办理业务")){
+
+                }else{
+                    Utils.now = var2.text.substring(var2.text.indexOf("到")+1,var2.text.indexOf("号"));
+                    SharedPreferences spf =getSharedPreferences("Count",Context.MODE_APPEND);
+                    String mine= spf.getString("mine","");
+                    Log.e("mine",mine);
+                    Log.e("now",Utils.now);
+                    if(Utils.num==""){
+
+                    }else{
+                        Log.e("now",Utils.num+"num");
+                    }
+
+                    if(Integer.parseInt(mine)-Integer.parseInt(Utils.now)==Integer.parseInt(Utils.num)){
+                        Toast.makeText(getApplicationContext(),"闹钟",Toast.LENGTH_SHORT).show();
+                        Log.e("now","闹钟");
+                        Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);
+                        r = RingtoneManager.getRingtone(getApplicationContext(),notification);
+                        r.play();
+                    }
+                }
 
                 return null;
             }

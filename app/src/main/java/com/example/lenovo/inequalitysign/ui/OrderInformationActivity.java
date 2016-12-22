@@ -1,8 +1,10 @@
 package com.example.lenovo.inequalitysign.ui;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +12,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -37,6 +40,33 @@ public class OrderInformationActivity extends AppCompatActivity {
     private TextView tv2;
     private TextView tv3;
     private TextView tv_address;
+//    private Handler mHandler = new Handler(){
+//        @Override
+//        public void handleMessage(Message msg) {
+//            super.handleMessage(msg);
+//            try {
+//                JSONObject object = new JSONObject(s);
+//                    all = object.getString("all");
+//                    now = object.getString("now");
+//                    add = object.getString("shop_address");
+//                    name = object.getString("shop_name");
+//                    tv.setText(name);
+//                    tv1.setText(all);
+//                    tv2.setText(now);
+//                    int i1 = Integer.parseInt(all)-Integer.parseInt(now);
+//                    tv3.setText(i1+"");
+//                    tv_address.setText(add);
+//                    SharedPreferences spf =getSharedPreferences("Count", Context.MODE_APPEND);
+//                    SharedPreferences.Editor editor = spf.edit();
+//                    editor.putString("mine",all);
+//                    editor.commit();
+//
+//            } catch (JSONException e) {
+//                e.printStackTrace();
+//            }
+//
+//        }
+//    };
 
 
 
@@ -45,15 +75,21 @@ public class OrderInformationActivity extends AppCompatActivity {
         public void onClick(View view) {
             switch (view.getId()){
                 case R.id.back4:
-                    Intent intent=new Intent(OrderInformationActivity.this,DiningInformationActivity.class);
                     Intent ii = getIntent();
                     String name1 = ii.getStringExtra("Name");
                     String id = ii.getStringExtra("Id");
                     String start1 = ii.getStringExtra("Context");
-                    intent.putExtra("Name",name1);
-                    intent.putExtra("Context",start1);
-                    intent.putExtra("Id",id);
-                    startActivity(intent);
+                    if(start1.equals("MineOrderActivity")){
+                        Intent intent=new Intent(OrderInformationActivity.this,MineOrderActivity.class);
+                        startActivity(intent);
+                    }else{
+                        Intent intent=new Intent(OrderInformationActivity.this,DiningInformationActivity.class);
+                        intent.putExtra("Name",name1);
+                        intent.putExtra("Context",start1);
+                        intent.putExtra("Id",id);
+                        startActivity(intent);
+                    }
+
                     break;
                 case R.id.btn_qxph:
                     Intent i3 = getIntent();
@@ -69,9 +105,31 @@ public class OrderInformationActivity extends AppCompatActivity {
                         startActivity(i5);
                     }
                     break;
+                case R.id.clock:
+                    AlertDialog.Builder adb = new AlertDialog.Builder(OrderInformationActivity.this);
+                    adb.setTitle("请设置闹钟,");
+                    final EditText edittext = new EditText(OrderInformationActivity.this);
+                    adb.setView(edittext);
+                    adb.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            if(edittext.getText().length()==0){
+                                Toast.makeText(OrderInformationActivity.this,"请输入值",Toast.LENGTH_LONG).show();
+                            }else{
+                               Utils.num = edittext.getText().toString();
+                            }
+                        }
+                    });
+                    adb.setNegativeButton("取消",null);
+                    adb.create();
+                    adb.show();
             }
         }
     };
+    private Button clock;
+    private String shop_id;
+    private String type;
+    private String s;
 
 
     @Override
@@ -80,26 +138,59 @@ public class OrderInformationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_order_information);
         finView();
         setOnClick();
-        Intent i = getIntent();
-        name = i.getStringExtra("NAME");
-        add = i.getStringExtra("ADDRESS");
-        all = i.getStringExtra("ALL");
-        now = i.getStringExtra("NOW");
-        tv.setText(name);
-        tv1.setText(all);
-        tv2.setText(now);
-        int i1 = Integer.parseInt(all)-Integer.parseInt(now);
-        tv3.setText(i1+"");
-        tv_address.setText(add);
+
+//        name = i.getStringExtra("NAME");
+//        add = i.getStringExtra("ADDRESS");
+//        all = i.getStringExtra("ALL");
+//        now = i.getStringExtra("NOW");
+        setContent();
 
 
     }
 
+    private void setContent() {
+        SharedPreferences spf =getSharedPreferences("Count",Context.MODE_APPEND);
+//        intent.putExtra("Context",content);
+//        intent.putExtra("Id",id);
+//        intent.putExtra("Address",add11);
+//        intent.putExtra("Name",name1);
+//        intent.putExtra("Mine",all1);
+//        intent.putExtra("Now",Utils.now);
+        Intent i = getIntent();
+//        shop_id = i.getStringExtra("Id");
+        Utils.now = spf.getString("Now","");
+        all = i.getStringExtra("Mine");
+        add = i.getStringExtra("Address");
+        name = i.getStringExtra("Name");
+        type = i.getStringExtra("type");
+        tv.setText(name);//商家名字
+        tv1.setText(all);//我的拍好
+        tv2.setText(Utils.now);//当前排号
+        int i1 = Integer.parseInt(all)-Integer.parseInt(Utils.now);
+        tv3.setText(i1+"");//还需等待
+        tv_address.setText(add);//地址
+
+//        Log.e("********",shop_id+type);
+//        new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                Httpss http = new Httpss();
+//                NameValuePair pair = new BasicNameValuePair("user_id", Utils.id);
+//                NameValuePair pair1 = new BasicNameValuePair("shop_id",shop_id);
+//                NameValuePair pair2 = new BasicNameValuePair("type",type);
+//                s = http.setAndGet(u,pair,pair1,pair2);
+//                Log.e("**************",s);
+//                Message msg = new Message();
+//                mHandler.sendMessage(msg);
+//            }
+//        }).start();
+    }
 
 
     private void setOnClick() {
         btn.setOnClickListener(mListener);
         btn1.setOnClickListener(mListener);
+        clock.setOnClickListener(mListener);
     }
 
     private void finView() {
@@ -110,6 +201,6 @@ public class OrderInformationActivity extends AppCompatActivity {
         tv2 = (TextView)findViewById(R.id.tv_num1);//当前已到
         tv3 = (TextView)findViewById(R.id.tv_num2);//还需等待
         tv_address = (TextView)findViewById(R.id.tv_address);
-
+        clock = (Button)findViewById(R.id.clock);
     }
 }

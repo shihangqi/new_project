@@ -5,6 +5,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#f0f0f0"
     tools:context="com.example.lenovo.inequalitysign.ui.MineOrderActivity">
     <RelativeLayout
         android:layout_width="match_parent"
@@ -17,7 +18,7 @@
             android:textSize="25dp"
             android:textColor="#fff"
             android:gravity="center"
-            android:text="订单"/>
+            android:text="我的订单"/>
         <ImageButton
             android:id="@+id/order_back"
             android:layout_width="wrap_content"

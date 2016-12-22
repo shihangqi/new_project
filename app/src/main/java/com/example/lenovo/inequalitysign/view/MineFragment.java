@@ -17,12 +17,16 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.lenovo.inequalitysign.R;
+import com.example.lenovo.inequalitysign.Utils.CircleImageView;
 import com.example.lenovo.inequalitysign.Utils.Utils;
 import com.example.lenovo.inequalitysign.http.Httpss;
 import com.example.lenovo.inequalitysign.ui.LoginActivity;
 import com.example.lenovo.inequalitysign.ui.MainActivity;
 import com.example.lenovo.inequalitysign.ui.MineOrderActivity;
 import com.example.lenovo.inequalitysign.ui.MineProfileActivity;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.display.CircleBitmapDisplayer;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -95,8 +99,12 @@ public class MineFragment extends Fragment {
             tv_name.setVisibility(View.VISIBLE);
             btn_exit.setVisibility(View.VISIBLE);
             tv_name.setText(name);
+            ImageLoader.getInstance().displayImage(url,imageButton);
         }
     };
+    private String url;
+    private DisplayImageOptions options;
+    private CircleImageView imageButton;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -110,7 +118,20 @@ public class MineFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         findView();
         setOnClick();
+        init();
         setContent();
+    }
+
+    private void init() {
+        options = new DisplayImageOptions.Builder()
+                .showImageOnLoading(R.drawable.ic_stub) // 设置图片下载期间显示的图片
+                .showImageForEmptyUri(R.drawable.ic_empty)// 设置图片Uri为空或是错误的时候显示的图片
+                .showImageOnFail(R.drawable.ic_error)// 设置图片加载或解码过程中发生错误显示的图片
+                .cacheInMemory(true)  // 设置下载的图片是否缓存在内存中
+                .cacheOnDisk(true)  // 设置下载的图片是否缓存在SD卡中
+                .considerExifParams(true)
+                .displayer(new CircleBitmapDisplayer(Color.WHITE, 5))// 设置成圆角图片
+                .build();// 创建配置过得DisplayImageOption对象
     }
 
     private void setContent() {
@@ -126,7 +147,7 @@ public class MineFragment extends Fragment {
                     try {
                         JSONObject object = new JSONObject(s);
                         name = object.getString("name");
-
+                        url = object.getString("img");
                         Message msg =new Message();
                         mHandler.sendMessage(msg);
                     } catch (JSONException e) {
@@ -150,5 +171,6 @@ public class MineFragment extends Fragment {
         llL = (LinearLayout)view.findViewById(R.id.mypageB3);//个人资料
         tv_name = (TextView)view.findViewById(R.id.tv_name);
         btn_exit = (Button) view.findViewById(R.id.btn_exit);
+        imageButton = (CircleImageView)view.findViewById(R.id.imageButton);
     }
 }

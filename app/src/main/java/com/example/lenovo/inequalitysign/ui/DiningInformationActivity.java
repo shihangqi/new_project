@@ -1,11 +1,11 @@
 package com.example.lenovo.inequalitysign.ui;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Handler;
 import android.os.Message;
@@ -13,10 +13,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
+
 import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
+
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -52,7 +51,7 @@ public class DiningInformationActivity extends AppCompatActivity {
     private String add11="";
     private String name1="";
     private String name;
-    private String id;
+    private String id="";
     private TextView tv_name;
     private ImageView img;
     private String s="";
@@ -139,6 +138,7 @@ public class DiningInformationActivity extends AppCompatActivity {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
+                Log.e("content",content);
                if(content.equals("YytActivity")){
                    type1.setText("服务类型");
                    type2.setText("等待人数");
@@ -242,7 +242,11 @@ public class DiningInformationActivity extends AppCompatActivity {
                                 Intent i2 = new Intent();
                                 i2.setClass(DiningInformationActivity.this,MainActivity.class);
                                 startActivity(i2);
-                            }else{
+                            }else if(content.equals("MineOrderActivity")){
+                                Intent i4 = new Intent();
+                                i4.setClass(DiningInformationActivity.this,MineOrderActivity.class);
+                                startActivity(i4);
+                            } else{
                                 Intent i3 = new Intent();
                                 i3.setClass(DiningInformationActivity.this,DiningActivity.class);
                                 startActivity(i3);
@@ -269,23 +273,35 @@ public class DiningInformationActivity extends AppCompatActivity {
                     adb.create();
                     adb.show();
                 }else{
-                    Log.e("=====",1+"");
+                    //得到数据
                     all1 = object.getString("all");
                     now = object.getString("now");
+                    Utils.now = now;
+                    SharedPreferences spf1 =getSharedPreferences("Count",Context.MODE_APPEND);
+                    SharedPreferences.Editor editor1 = spf1.edit();
+                    editor1.putString("Now",Utils.now);
+                    editor1.commit();
                     add11 = object.getString("shop_address");
                     name1 = object.getString("shop_name");
-
+                    //将我的排号和商家地址 保存到本地；
+                    SharedPreferences spf =getSharedPreferences("Count", Context.MODE_APPEND);
+                    SharedPreferences.Editor editor = spf.edit();
+                    editor.putString("mine",all1);
+                    editor.putString("address",add11);
+                    editor.commit();
                     Intent intent = new Intent();
                     intent.setClass(DiningInformationActivity.this,OrderInformationActivity.class);
                     String id = getIntent().getStringExtra("Id");
                     intent.putExtra("Context",content);
                     intent.putExtra("Id",id);
-                    intent.putExtra("Type",type+"");
-                    intent.putExtra("ALL",all1);
-                    intent.putExtra("NOW",now);
-                    intent.putExtra("ADDRESS",add11);
-                    intent.putExtra("NAME",name1);
+                    intent.putExtra("Address",add11);
+                    intent.putExtra("Name",name1);
+                    intent.putExtra("Mine",all1);
+                    intent.putExtra("Now",Utils.now);
 
+                    intent.putExtra("type",type+"");
+                    Log.e("Utils.now",now);
+                    Log.e("Utils.now",Utils.now);
                     startActivity(intent);
 
 
@@ -323,7 +339,12 @@ public class DiningInformationActivity extends AppCompatActivity {
                         Utils.flag =2;
                         Intent i=new Intent(DiningInformationActivity.this,MainActivity.class);
                         startActivity(i);
-                    } else{
+                    }else if(start.equals("MineOrderActivity")) {
+                        Intent i4 = new Intent();
+                        i4.setClass(DiningInformationActivity.this,MineOrderActivity.class);
+                        startActivity(i4);
+                    }
+                    else{
                         Toast.makeText(DiningInformationActivity.this,content,Toast.LENGTH_SHORT).show();
                     }
                     break;
@@ -333,7 +354,6 @@ public class DiningInformationActivity extends AppCompatActivity {
                         i.setClass(DiningInformationActivity.this,LoginActivity.class);
                         startActivity(i);
                     }else{
-
                         if(state == 0){
                             AlertDialog.Builder adb = new AlertDialog.Builder(DiningInformationActivity.this);
                             adb.setTitle("温馨提示");
@@ -385,9 +405,11 @@ public class DiningInformationActivity extends AppCompatActivity {
         init();
 
         Intent i = getIntent();
-        name = i.getStringExtra("Name");
+        Log.e("content","1");
         id = i.getStringExtra("Id");
         content  = i.getStringExtra("Context");
+        Log.e("++++++",id);
+        Log.e("content",content);
 
         setContent();
 

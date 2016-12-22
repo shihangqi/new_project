@@ -17,17 +17,17 @@ tools:context="com.example.lenovo.inequalitysign.ui.MainActivity">
         android:orientation="horizontal">
         <TextView
             android:layout_width="0dp"
-            android:layout_weight="4"
+            android:layout_weight="5"
             android:layout_height="30dp"
-            android:textSize="16sp"
+            android:textSize="18sp"
             android:id="@+id/tv_img"
-            android:ellipsize="end"
+            android:singleLine="true"
             android:text="石家庄"
             android:layout_gravity="center"
             android:textColor="@color/black"
             android:drawableRight="@drawable/xiala1"
             android:gravity="center"
-            android:paddingLeft="2dp"
+            android:paddingLeft="10dp"
             />
         <Button
             android:id="@+id/btn_search"
@@ -35,7 +35,7 @@ tools:context="com.example.lenovo.inequalitysign.ui.MainActivity">
             android:layout_weight="10"
             android:layout_height="30dp"
             android:layout_gravity="center"
-            android:text="请输入餐厅名、营业厅名"
+            android:text="请输入餐厅名"
             android:textSize="20dp"
             android:textColorHint="@color/font"
             android:textColor="@color/font"

@@ -4,12 +4,12 @@ package com.example.lenovo.inequalitysign.entity;
  * Created by ff on 2016/12/3.
  */
 public class Order {
-    private String title;
+    private String title;//商家名称
     private String url;
-    private String num;
-    private String type;
+    private String num;//所排号数
+    private String type;//服务类型
     private String shop_id;
-    private String status;
+    private String status;//消费 或未消费
 
     public Order(String title, String url, String num, String type, String shop_id, String status) {
         this.title = title;
