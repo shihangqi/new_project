@@ -88,6 +88,7 @@ public class DiningActivity extends Activity {
             switch (view.getId()){
                 case R.id.back1:
                     Intent i = new Intent();
+                    Utils.flag = 1;
                     i.setClass(DiningActivity.this,MainActivity.class);
                     startActivity(i);
                     break;

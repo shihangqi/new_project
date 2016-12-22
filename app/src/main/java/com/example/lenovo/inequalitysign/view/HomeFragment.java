@@ -164,7 +164,7 @@ public class HomeFragment extends Fragment {
                     if(window.isShowing()){
                         window.dismiss();
                     }else{
-                        window.showAsDropDown(tv_img,20,0);
+                        window.showAsDropDown(tv_img,15,20);
                     }
                     break;
                 case R.id.pop1:
@@ -250,7 +250,6 @@ public class HomeFragment extends Fragment {
                             Httpss http = new Httpss();
                             NameValuePair pair = new BasicNameValuePair("city",Utils.city);
                             String s = http.setAndGet(u,pair);
-
                             ls = http.parser(s);
                             Message msg = new Message();
                             mHandler.sendMessage(msg);
