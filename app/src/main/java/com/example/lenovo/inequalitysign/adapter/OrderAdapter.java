@@ -23,7 +23,6 @@ import com.example.lenovo.inequalitysign.Utils.Utils;
 import com.example.lenovo.inequalitysign.entity.Order;
 import com.example.lenovo.inequalitysign.http.Httpss;
 import com.example.lenovo.inequalitysign.ui.DiningInformationActivity;
-import com.example.lenovo.inequalitysign.ui.MineOrderActivity;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.display.CircleBitmapDisplayer;

@@ -1,5 +1,6 @@
 package com.example.lenovo.inequalitysign.ui;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
@@ -33,6 +34,7 @@ public class MineOrderActivity extends AppCompatActivity {
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             OrderAdapter adapter = new OrderAdapter(MineOrderActivity.this,ls);
+            Log.e("ls.toString",ls.toString());
             lv.setAdapter(adapter);
         }
     };
@@ -50,12 +52,8 @@ public class MineOrderActivity extends AppCompatActivity {
     }
 
     private void setContent() {
-        Intent in = getIntent();
-        shop_id = in.getStringExtra("Id");
-        type = in.getStringExtra("Type");
-        num = in.getStringExtra("Num");
-        Log.e("++++++",shop_id+"1");
-        if(shop_id == "null"){
+
+
             new Thread(new Runnable() {
                 @Override
                 public void run() {
@@ -68,31 +66,17 @@ public class MineOrderActivity extends AppCompatActivity {
                     mHandler.sendMessage(msg);
                 }
             }).start();
-        }else{
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    ls.clear();
-                    Httpss http = new Httpss();
-                    NameValuePair pair = new BasicNameValuePair("user_id",Utils.id);
-                    NameValuePair pair1 = new BasicNameValuePair("shop_id",shop_id);
-                    NameValuePair pair2 = new BasicNameValuePair("type",type);
-                    NameValuePair pair3 = new BasicNameValuePair("Num",num);
-                    String s = http.setAndGet(u1,pair,pair1,pair2,pair3);
-                    ls = http.parserOrder(s);
-                    Message msg = new Message();
-                    mHandler.sendMessage(msg);
-                }
-            }).start();
-        }
-    }
+}
+
+
 
     private void setOnClick() {
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent();
-                intent.setClass(MineOrderActivity.this,AlreadyLogin.class);
+                Utils.flag = 4;
+                intent.setClass(MineOrderActivity.this,MainActivity.class);
                 startActivity(intent);
             }
         });
