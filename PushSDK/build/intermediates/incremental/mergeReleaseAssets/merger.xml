@@ -1,6 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<<<<<<< HEAD
 <merger version="3"><dataSet config="main"><source path="F:\new_project\new_project\PushSDK\assets"/><source path="F:\new_project\new_project\PushSDK\build\generated\assets\shaders\release"/></dataSet><dataSet config="release"><source path="F:\new_project\new_project\PushSDK\build-types\release\assets"/></dataSet></merger>
-=======
-<merger version="3"><dataSet config="main"><source path="F:\new_project\PushSDK\assets"/><source path="F:\new_project\PushSDK\build\generated\assets\shaders\release"/></dataSet><dataSet config="release"><source path="F:\new_project\PushSDK\build-types\release\assets"/></dataSet></merger>
->>>>>>> 0f47a2a143f825e3389e33edee847469296018db
