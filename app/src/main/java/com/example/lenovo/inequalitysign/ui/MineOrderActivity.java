@@ -38,24 +38,20 @@ public class MineOrderActivity extends AppCompatActivity {
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             OrderAdapter adapter = new OrderAdapter(MineOrderActivity.this,ls);
+
             SharedPreferences spf = getSharedPreferences("Count", Context.MODE_APPEND);
             add = spf.getString("address","");
             lv.setAdapter(adapter);
             lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
-                    Log.e("Status",ls.get(i).getStatus());
                     if("1".equals(ls.get(i).getStatus())){
-                        Intent ii = new Intent();
-                        ii.putExtra("Id",ls.get(i).getShop_id());
-                        ii.putExtra("type",ls.get(i).getType());
-                        ii.putExtra("Name",ls.get(i).getTitle());
-                        ii.putExtra("Mine",ls.get(i).getNum());
-                        ii.putExtra("Context","MineOrderActivity");
-                        ii.putExtra("Address",add);
-                        ii.setClass(MineOrderActivity.this,OrderInformationActivity.class);
-                        startActivity(ii);
+                        Intent i1 = new Intent(MineOrderActivity.this,DiningInformationActivity.class);
+                        i1.putExtra("Name",ls.get(i).getTitle());
+                        i1.putExtra("Address",add);
+                        i1.putExtra("Type",ls.get(i).getType());
+                        i1.putExtra("Mine",ls.get(i).getNum());
+
                     }
                 }
             });
@@ -84,9 +80,7 @@ public class MineOrderActivity extends AppCompatActivity {
                     Httpss http = new Httpss();
                     NameValuePair pair = new BasicNameValuePair("id",Utils.id);
                     String s = http.setAndGet(u,pair);
-                    Log.e("++++++++",s);
                     ls = http.parserOrder(s);
-                    Log.e("+++++++",ls.toString());
                     Message msg = new Message();
                     mHandler.sendMessage(msg);
                 }
