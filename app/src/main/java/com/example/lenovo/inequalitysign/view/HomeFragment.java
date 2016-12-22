@@ -8,12 +8,14 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.app.Fragment;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -161,12 +163,10 @@ public class HomeFragment extends Fragment {
                     startActivity(ii);
                     break;
                 case R.id.tv_img:
-
-                    if(window.isShowing()){
-                        window.dismiss();
-                    }else{
-                        window.showAsDropDown(tv_img,20,0);
-                    }
+                    window.setBackgroundDrawable(ResourcesCompat.getDrawable(getResources(), android.R.color.transparent, null));
+                    window.showAsDropDown(tv_img,10,10);
+                    window.setOutsideTouchable(false);
+                    window.setFocusable(true);
                     break;
                 case R.id.pop1:
                     String city = pop1.getText().toString();
@@ -251,7 +251,6 @@ public class HomeFragment extends Fragment {
                             Httpss http = new Httpss();
                             NameValuePair pair = new BasicNameValuePair("city",Utils.city);
                             String s = http.setAndGet(u,pair);
-
                             ls = http.parser(s);
                             Message msg = new Message();
                             mHandler.sendMessage(msg);
