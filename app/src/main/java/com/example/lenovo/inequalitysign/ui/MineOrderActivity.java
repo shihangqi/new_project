@@ -1,13 +1,16 @@
 package com.example.lenovo.inequalitysign.ui;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
 
@@ -29,13 +32,29 @@ public class MineOrderActivity extends AppCompatActivity {
     private List<Order> ls = new ArrayList<>();
     private ImageButton btn_back;
     private ListView lv;
+    private String add;
     private Handler mHandler = new Handler(){
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             OrderAdapter adapter = new OrderAdapter(MineOrderActivity.this,ls);
-            Log.e("ls.toString",ls.toString());
+
+            SharedPreferences spf = getSharedPreferences("Count", Context.MODE_APPEND);
+            add = spf.getString("address","");
             lv.setAdapter(adapter);
+            lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                    if("1".equals(ls.get(i).getStatus())){
+                        Intent i1 = new Intent(MineOrderActivity.this,DiningInformationActivity.class);
+                        i1.putExtra("Name",ls.get(i).getTitle());
+                        i1.putExtra("Address",add);
+                        i1.putExtra("Type",ls.get(i).getType());
+                        i1.putExtra("Mine",ls.get(i).getNum());
+
+                    }
+                }
+            });
         }
     };
     private String shop_id;

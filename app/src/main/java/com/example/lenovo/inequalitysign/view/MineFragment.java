@@ -9,6 +9,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
 import android.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,9 +25,11 @@ import com.example.lenovo.inequalitysign.ui.LoginActivity;
 import com.example.lenovo.inequalitysign.ui.MainActivity;
 import com.example.lenovo.inequalitysign.ui.MineOrderActivity;
 import com.example.lenovo.inequalitysign.ui.MineProfileActivity;
+import com.example.lenovo.inequalitysign.ui.SettingAboutActivity;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.display.CircleBitmapDisplayer;
+import com.nostra13.universalimageloader.utils.L;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -85,6 +88,10 @@ public class MineFragment extends Fragment {
                     Utils.flag = 1;
                     Intent intent = new Intent(getActivity().getApplicationContext(), MainActivity.class);
                     startActivity(intent);
+                    break;
+                case R.id.mypageB4:
+                    Intent i1= new Intent(getActivity().getApplicationContext(), SettingAboutActivity.class);
+                    startActivity(i1);
             }
         }
     };
@@ -105,6 +112,7 @@ public class MineFragment extends Fragment {
     private String url;
     private DisplayImageOptions options;
     private CircleImageView imageButton;
+    private LinearLayout ll2;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -144,7 +152,9 @@ public class MineFragment extends Fragment {
                     Httpss http = new Httpss();
                     NameValuePair pair = new BasicNameValuePair("id", Utils.id);
                     String s = http.setAndGet(u,pair);
+                    Log.e("+++++",s);
                     try {
+                        Log.e("+++++",s);
                         JSONObject object = new JSONObject(s);
                         name = object.getString("name");
                         url = object.getString("img");
@@ -163,6 +173,7 @@ public class MineFragment extends Fragment {
         ll.setOnClickListener(mListener);
         llL.setOnClickListener(mListener);
         btn_exit.setOnClickListener(mListener);
+        ll2.setOnClickListener(mListener);
     }
 
     private void findView() {
@@ -172,5 +183,6 @@ public class MineFragment extends Fragment {
         tv_name = (TextView)view.findViewById(R.id.tv_name);
         btn_exit = (Button) view.findViewById(R.id.btn_exit);
         imageButton = (CircleImageView)view.findViewById(R.id.imageButton);
+        ll2 = (LinearLayout)view.findViewById(R.id.mypageB4);
     }
 }

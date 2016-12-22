@@ -153,8 +153,8 @@ public class OrderAdapter extends BaseAdapter {
                 Intent i = new Intent();
                 i.setClass(context,DiningInformationActivity.class);
                 i.putExtra("Id",ls.get(i2).getShop_id());
-                Log.e("Shop_id",shop_id+"shop_id");
                 i.putExtra("Context","MineOrderActivity");
+                i.putExtra("Name",ls.get(i2).getTitle());
                 context.startActivity(i);
             }
         });
