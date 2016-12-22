@@ -33,7 +33,6 @@
                 android:background="@drawable/shape"/>
             <LinearLayout
                 android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <Button
@@ -61,6 +60,8 @@
             <LinearLayout
                 android:paddingLeft="10dp"
                 android:layout_width="match_parent"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
                 android:layout_height="30dp">
                 <TextView
                     android:layout_gravity="center_vertical"
@@ -74,7 +75,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="精选餐厅"/>
+                    android:text="精选活动"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_marginRight="5dp"

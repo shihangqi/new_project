@@ -14,7 +14,7 @@ public class Index extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_index);
-        new Handler().postDelayed(r,1000);
+        new Handler().postDelayed(r,3000);
 
     }
     Runnable r = new Runnable() {

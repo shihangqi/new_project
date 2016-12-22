@@ -104,8 +104,6 @@
 
         <activity android:name=".ui.SettingAboutActivity">
         </activity>
-        <activity android:name=".ui.Index">
-        </activity>
     </application>
 
 </manifest>
