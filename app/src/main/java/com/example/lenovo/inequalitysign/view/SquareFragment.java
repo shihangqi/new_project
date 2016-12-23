@@ -3,6 +3,7 @@ package com.example.lenovo.inequalitysign.view;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -65,11 +66,15 @@ public class SquareFragment extends Fragment {
                     startActivity(intent);
                     break;
                 case R.id.ll1:
-                    Intent i1 = new Intent();
-                    i1.putExtra("Name",name1);
-                    i1.putExtra("Id",id1);
-                    i1.putExtra("Context","SquareFragment");
-                    i1.setClass(getActivity().getApplicationContext(), DiningInformationActivity.class);
+//                    Intent i1 = new Intent();
+//                    i1.putExtra("Name",name1);
+//                    i1.putExtra("Id",id1);
+//                    i1.putExtra("Context","SquareFragment");
+//                    i1.setClass(getActivity().getApplicationContext(), DiningInformationActivity.class);
+                    String url = "http://www.webadress.cn"; // web address
+                    Intent intent1 = new Intent(Intent.ACTION_VIEW);
+                    intent1.setData(Uri.parse(url));
+                    startActivity(intent1);
             }
         }
     };
@@ -159,6 +164,7 @@ public class SquareFragment extends Fragment {
         rank.setOnClickListener(mListener);
         comment.setOnClickListener(mListener);
         scene.setOnClickListener(mListener);
+//        ll1.setOnClickListener(mListener);
     }
 
     private void findView() {

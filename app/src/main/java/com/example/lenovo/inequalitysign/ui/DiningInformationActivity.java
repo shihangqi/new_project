@@ -134,6 +134,9 @@ public class DiningInformationActivity extends AppCompatActivity {
             }
         }
     };
+    /**
+     * 设置服务种类
+     */
     private Handler mHandler = new Handler(){//处理页面数据
         @Override
         public void handleMessage(Message msg) {
@@ -225,6 +228,7 @@ public class DiningInformationActivity extends AppCompatActivity {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
+            //如果不能取号  提示
             try {
                 JSONObject object = new JSONObject(s);
                 result  = object.getString("result");
@@ -315,7 +319,10 @@ public class DiningInformationActivity extends AppCompatActivity {
 
         }
     };
-
+    /**
+     * 本页面按钮的点击事件
+     *
+     */
     private View.OnClickListener mListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
@@ -407,6 +414,7 @@ public class DiningInformationActivity extends AppCompatActivity {
         Intent i = getIntent();
         Log.e("content","1");
         id = i.getStringExtra("Id");
+        name = i.getStringExtra("Name");
         content  = i.getStringExtra("Context");
         Log.e("++++++",id);
         Log.e("content",content);
