@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
@@ -19,6 +20,7 @@ import android.widget.Toast;
 
 import com.example.lenovo.inequalitysign.R;
 import com.example.lenovo.inequalitysign.Utils.Utils;
+import com.example.lenovo.inequalitysign.adapter.MyApplication;
 import com.example.lenovo.inequalitysign.entity.Dining;
 import com.example.lenovo.inequalitysign.http.Httpss;
 
@@ -69,7 +71,6 @@ public class OrderInformationActivity extends AppCompatActivity {
 //    };
 
 
-
     private View.OnClickListener mListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
@@ -105,7 +106,7 @@ public class OrderInformationActivity extends AppCompatActivity {
                         startActivity(i5);
                     }
                     break;
-                case R.id.clock:
+                case R.id.clock:    //设置响铃
                     AlertDialog.Builder adb = new AlertDialog.Builder(OrderInformationActivity.this);
                     adb.setTitle("请设置闹钟,");
                     final EditText edittext = new EditText(OrderInformationActivity.this);
@@ -123,6 +124,12 @@ public class OrderInformationActivity extends AppCompatActivity {
                     adb.setNegativeButton("取消",null);
                     adb.create();
                     adb.show();
+                    break;
+                case R.id.stop: //停止响铃
+                    if (MyApplication.mp != null) {
+                        MyApplication.mp.stop();
+                    }
+                    break;
             }
         }
     };
@@ -130,7 +137,8 @@ public class OrderInformationActivity extends AppCompatActivity {
     private String shop_id;
     private String type;
     private String s;
-
+    private String con;
+    private Button stop;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -148,6 +156,14 @@ public class OrderInformationActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (MyApplication.mp != null) {
+            MyApplication.mp.release();
+        }
+    }
+
     private void setContent() {
         SharedPreferences spf =getSharedPreferences("Count",Context.MODE_APPEND);
 //        intent.putExtra("Context",content);
@@ -157,6 +173,7 @@ public class OrderInformationActivity extends AppCompatActivity {
 //        intent.putExtra("Mine",all1);
 //        intent.putExtra("Now",Utils.now);
         Intent i = getIntent();
+        con = i.getStringExtra("Context");
 //        shop_id = i.getStringExtra("Id");
         Utils.now = spf.getString("Now","");
         all = i.getStringExtra("Mine");
@@ -169,6 +186,10 @@ public class OrderInformationActivity extends AppCompatActivity {
         int i1 = Integer.parseInt(all)-Integer.parseInt(Utils.now);
         tv3.setText(i1+"");//还需等待
         tv_address.setText(add);//地址
+        if (con.equals("222")) {
+            clock.setVisibility(View.GONE);
+            stop.setVisibility(View.VISIBLE);
+        }
 
 //        Log.e("********",shop_id+type);
 //        new Thread(new Runnable() {
@@ -191,6 +212,7 @@ public class OrderInformationActivity extends AppCompatActivity {
         btn.setOnClickListener(mListener);
         btn1.setOnClickListener(mListener);
         clock.setOnClickListener(mListener);
+        stop.setOnClickListener(mListener);
     }
 
     private void finView() {
@@ -202,5 +224,6 @@ public class OrderInformationActivity extends AppCompatActivity {
         tv3 = (TextView)findViewById(R.id.tv_num2);//还需等待
         tv_address = (TextView)findViewById(R.id.tv_address);
         clock = (Button)findViewById(R.id.clock);
+        stop = (Button) findViewById(R.id.stop);
     }
 }

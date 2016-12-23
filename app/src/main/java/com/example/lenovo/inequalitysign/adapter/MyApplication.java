@@ -3,7 +3,9 @@ package com.example.lenovo.inequalitysign.adapter;
 import android.app.Application;
 import android.app.Notification;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
@@ -11,6 +13,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.example.lenovo.inequalitysign.Utils.Utils;
+import com.example.lenovo.inequalitysign.ui.OrderInformationActivity;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
@@ -24,7 +27,8 @@ import com.umeng.message.entity.UMessage;
  * Created by ff on 2016/11/29.
  */
 public class MyApplication extends Application {
-    private Ringtone r;
+
+    public static MediaPlayer mp;
 
     @Override
     public void onCreate() {
@@ -73,9 +77,13 @@ public class MyApplication extends Application {
                     if(Integer.parseInt(mine)-Integer.parseInt(Utils.now)==Integer.parseInt(Utils.num)){
                         Toast.makeText(getApplicationContext(),"闹钟",Toast.LENGTH_SHORT).show();
                         Log.e("now","闹钟");
-                        Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);
-                        r = RingtoneManager.getRingtone(getApplicationContext(),notification);
-                        r.play();
+
+                        //闹钟提醒
+                        Intent intent= new Intent(getApplicationContext(), OrderInformationActivity.class);
+                        intent.putExtra("Context", "222");
+                        startActivity(intent);
+
+                        startMedia();
                     }
                 }
 
@@ -84,6 +92,27 @@ public class MyApplication extends Application {
         };
         mPushAgent.setMessageHandler(messageHandler);
 
+    }
+
+    /**
+     * 开始播放铃声
+     */
+    private void startMedia() {
+        try {
+            mp = new MediaPlayer();
+            mp.setDataSource(this, RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM));
+            mp.prepare();
+            mp.start();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                mp.release();
+            }
+        });
     }
 
     private static void initImageLoader(Context context) {
