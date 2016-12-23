@@ -3,6 +3,7 @@ package com.example.lenovo.inequalitysign.view;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -64,12 +65,21 @@ public class SquareFragment extends Fragment {
                     intent.setClass(getActivity().getApplicationContext(), SceneActivity.class);
                     startActivity(intent);
                     break;
-                case R.id.ll1:
-                    Intent i1 = new Intent();
-                    i1.putExtra("Name",name1);
-                    i1.putExtra("Id",id1);
-                    i1.putExtra("Context","SquareFragment");
-                    i1.setClass(getActivity().getApplicationContext(), DiningInformationActivity.class);
+                case R.id.iv1:
+                    Uri uri = Uri.parse("http://google.com");
+                    Intent it = new Intent(Intent.ACTION_VIEW, uri);
+                    startActivity(it);
+                    break;
+                case R.id.iv2:
+                    Uri uri1 = Uri.parse("http://google.com");
+                    Intent it1 = new Intent(Intent.ACTION_VIEW, uri1);
+                    startActivity(it1);
+                    break;
+                case R.id.iv3:
+                    Uri uri2 = Uri.parse("http://google.com");
+                    Intent it2 = new Intent(Intent.ACTION_VIEW, uri2);
+                    startActivity(it2);
+                    break;
             }
         }
     };
@@ -159,6 +169,9 @@ public class SquareFragment extends Fragment {
         rank.setOnClickListener(mListener);
         comment.setOnClickListener(mListener);
         scene.setOnClickListener(mListener);
+        iv1.setOnClickListener(mListener);
+        iv2.setOnClickListener(mListener);
+        iv3.setOnClickListener(mListener);
     }
 
     private void findView() {
@@ -177,4 +190,40 @@ public class SquareFragment extends Fragment {
 
 
     }
+
+//    wv = (WebView) findViewById(R.id.webView1);
+//    wv.getSettings().setJavaScriptEnabled(true);
+//    wv.setScrollBarStyle(0);
+//    WebSettings webSettings = wv.getSettings();
+//    webSettings.setAllowFileAccess(true);
+//    webSettings.setBuiltInZoomControls(true);
+//    wv.loadUrl("http://www.baidu.com");
+////加载数据
+//    wv.setWebChromeClient(new WebChromeClient() {
+//        @Override
+//        public void onProgressChanged(WebView view, int newProgress) {
+//            if (newProgress == 100) {
+//                MainActivity.this.setTitle("加载完成");
+//            } else {
+//                MainActivity.this.setTitle("加载中.......");
+//
+//            }
+//        }
+//    });
+////这个是当网页上的连接被点击的时候
+//    wv.setWebViewClient(new WebViewClient() {
+//        public boolean shouldOverrideUrlLoading(final WebView view,
+//        final String url) {
+//            loadurl(view, url);
+//            return true;
+//        }
+//    });
+//    // goBack()表示返回webView的上一页面
+//    public boolean onKeyDown(int keyCoder, KeyEvent event) {
+//        if (wv.canGoBack() && keyCoder == KeyEvent.KEYCODE_BACK) {
+//            wv.goBack();
+//            return true;
+//        }
+//        return false;
+//    }
 }

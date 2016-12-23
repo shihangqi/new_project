@@ -69,6 +69,7 @@ public class RankActivity extends AppCompatActivity {
                 Intent intent = new Intent();
                 intent.setClass(RankActivity.this,MainActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
     }

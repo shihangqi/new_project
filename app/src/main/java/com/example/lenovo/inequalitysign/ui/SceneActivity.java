@@ -91,6 +91,7 @@ public class SceneActivity extends AppCompatActivity {
                     Utils.flag = 2;
                     i.setClass(SceneActivity.this,MainActivity.class);
                     startActivity(i);
+                    finish();
                     break;
                 case R.id.S_menu:
                     uploadScene();
@@ -113,16 +114,16 @@ public class SceneActivity extends AppCompatActivity {
         View parent = LayoutInflater.from(this).inflate(R.layout.activity_scene, null);
         popupWindow.showAsDropDown(btn_menu);
         //popupWindow在弹窗的时候背景半透明
-        final WindowManager.LayoutParams params = getWindow().getAttributes();
-        params.alpha = 0.5f;
-        getWindow().setAttributes(params);
-        popupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
-            @Override
-            public void onDismiss() {
-                params.alpha = 1.0f;
-                getWindow().setAttributes(params);
-            }
-        });
+//        final WindowManager.LayoutParams params = getWindow().getAttributes();
+//        params.alpha = 0.5f;
+//        getWindow().setAttributes(params);
+//        popupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
+//            @Override
+//            public void onDismiss() {
+//                params.alpha = 1.0f;
+//                getWindow().setAttributes(params);
+//            }
+//        });
 
         mTvCamera.setOnClickListener(new View.OnClickListener() {
             @Override

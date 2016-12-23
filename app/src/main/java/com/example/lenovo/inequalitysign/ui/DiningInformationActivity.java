@@ -160,7 +160,6 @@ public class DiningInformationActivity extends AppCompatActivity {
                                 state =1;
                             }
                         });
-                        Log.e("+=====",type_name1+"111");
                         int i1 = Integer.parseInt(alltype1);
                         int k1 = Integer.parseInt(nowtype1);
                         tv1.setText(type_name1);
@@ -265,10 +264,12 @@ public class DiningInformationActivity extends AppCompatActivity {
                                 Intent i2 = new Intent();
                                 i2.setClass(DiningInformationActivity.this,MainActivity.class);
                                 startActivity(i2);
-                            }else{
+                            }else if(content.equals("MineOrderActivity")){
+                                Intent i4 = new Intent();
+                                i4.setClass(DiningInformationActivity.this,MineOrderActivity.class);
+                                startActivity(i4);
+                            } else{
                                 Intent i3 = new Intent();
-
-
                                 i3.setClass(DiningInformationActivity.this,DiningActivity.class);
                                 startActivity(i3);
                             }
@@ -307,6 +308,7 @@ public class DiningInformationActivity extends AppCompatActivity {
                     Log.e("Utils.now",now);
                     Log.e("Utils.now",Utils.now);
                     startActivity(intent);
+                    finish();
 
 
                 }
@@ -333,23 +335,29 @@ public class DiningInformationActivity extends AppCompatActivity {
                         Utils.flag =1;
                         Intent intent1 = new Intent(DiningInformationActivity.this,MainActivity.class);
                         startActivity(intent1);
+                        finish();
                     }else if(start.equals("DiningActivity")){
                         Intent i=new Intent(DiningInformationActivity.this,DiningActivity.class);
                         startActivity(i);
+                        finish();
                     }else if(start.equals("RankActivity")){
                         Intent i1=new Intent(DiningInformationActivity.this,RankActivity.class);
                         startActivity(i1);
+                        finish();
                     }else if(start.equals("YytActivity")){
                         Intent i=new Intent(DiningInformationActivity.this,DiningActivity.class);
                         startActivity(i);
+                        finish();
                     }else if(start.equals("SquareFragment")){
                         Utils.flag =2;
                         Intent i=new Intent(DiningInformationActivity.this,MainActivity.class);
                         startActivity(i);
+                        finish();
                     }else if(start.equals("MineOrderActivity")) {
                         Intent i4 = new Intent();
                         i4.setClass(DiningInformationActivity.this,MineOrderActivity.class);
                         startActivity(i4);
+                        finish();
                     }
                     else{
                         Toast.makeText(DiningInformationActivity.this,content,Toast.LENGTH_SHORT).show();
@@ -360,6 +368,7 @@ public class DiningInformationActivity extends AppCompatActivity {
                         Intent i = new Intent();
                         i.setClass(DiningInformationActivity.this,LoginActivity.class);
                         startActivity(i);
+                        finish();
                     }else{
                         if(state == 0){
                             AlertDialog.Builder adb = new AlertDialog.Builder(DiningInformationActivity.this);

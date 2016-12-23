@@ -98,6 +98,7 @@ public class MineOrderActivity extends AppCompatActivity {
                 Utils.flag = 4;
                 intent.setClass(MineOrderActivity.this,MainActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
     }

@@ -137,15 +137,31 @@
             android:text="2"
             android:id="@+id/tv_num1"
             android:layout_weight="0.8"/>
-        <Button
-            android:id="@+id/clock"
-            android:layout_margin="10dp"
-            android:layout_gravity="center_vertical"
-            android:layout_width="0dp"
+        <FrameLayout
             android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="设置闹钟提醒"
-            ></Button>
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+            <Button
+                android:background="@drawable/zzkshape"
+                android:id="@+id/clock"
+                android:layout_margin="10dp"
+                android:layout_gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="设置闹钟提醒"
+                ></Button>
+            <Button
+                android:visibility="gone"
+                android:background="@drawable/zzkshape"
+                android:id="@+id/stop"
+                android:layout_margin="10dp"
+                android:layout_gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="关闭闹钟"
+                ></Button>
+        </FrameLayout>
+
 
     </LinearLayout>
     <LinearLayout

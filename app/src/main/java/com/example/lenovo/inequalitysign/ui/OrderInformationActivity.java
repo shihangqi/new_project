@@ -5,15 +5,13 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutCompat;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -22,6 +20,7 @@ import android.widget.Toast;
 
 import com.example.lenovo.inequalitysign.R;
 import com.example.lenovo.inequalitysign.Utils.Utils;
+import com.example.lenovo.inequalitysign.adapter.MyApplication;
 import com.example.lenovo.inequalitysign.entity.Dining;
 import com.example.lenovo.inequalitysign.http.Httpss;
 
@@ -31,7 +30,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class OrderInformationActivity extends AppCompatActivity {
-    private String u = Utils.SHOP_URL+"join";
+    private String u = Utils.SHOP_URL+"cancelorder";
     private ImageButton btn1;
     private Button btn;
     private String all;
@@ -43,6 +42,18 @@ public class OrderInformationActivity extends AppCompatActivity {
     private TextView tv2;
     private TextView tv3;
     private TextView tv_address;
+    private String message;
+    private Handler mHandler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            if(message.equals("ok")){
+                Toast.makeText(OrderInformationActivity.this,"取消订单成功",Toast.LENGTH_SHORT).show();
+            }else{
+                Toast.makeText(OrderInformationActivity.this,"取消订单失败",Toast.LENGTH_SHORT).show();
+            }
+        }
+    };
 //    private Handler mHandler = new Handler(){
 //        @Override
 //        public void handleMessage(Message msg) {
@@ -72,7 +83,6 @@ public class OrderInformationActivity extends AppCompatActivity {
 //    };
 
 
-    private EditText edittext;
     private View.OnClickListener mListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
@@ -85,16 +95,31 @@ public class OrderInformationActivity extends AppCompatActivity {
                     if(start1.equals("MineOrderActivity")){
                         Intent intent=new Intent(OrderInformationActivity.this,MineOrderActivity.class);
                         startActivity(intent);
+                        finish();
                     }else{
                         Intent intent=new Intent(OrderInformationActivity.this,DiningInformationActivity.class);
                         intent.putExtra("Name",name1);
                         intent.putExtra("Context",start1);
                         intent.putExtra("Id",id);
                         startActivity(intent);
+                        finish();
                     }
 
                     break;
                 case R.id.btn_qxph:
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Httpss http = new Httpss();
+                            NameValuePair pair = new BasicNameValuePair("shop_id",shop_id);
+                            NameValuePair pair1 =  new BasicNameValuePair("type",type);
+                            NameValuePair pair2 = new BasicNameValuePair("num",all);
+                            NameValuePair pair3 = new BasicNameValuePair("user_id",Utils.id);
+                            message = http.setAndGet(u,pair,pair1,pair2,pair3);
+                            Message msg = new Message();
+                            mHandler.sendMessage(msg);
+                        }
+                    }).start();
                     Intent i3 = getIntent();
                     String context = i3.getStringExtra("Context");
                     if(context.equals("HomeFragment")){
@@ -102,19 +127,18 @@ public class OrderInformationActivity extends AppCompatActivity {
                         Utils.flag =1;
                         i4.setClass(OrderInformationActivity.this,MainActivity.class);
                         startActivity(i4);
+                        finish();
                     }else{
                         Intent i5 = new Intent();
                         i5.setClass(OrderInformationActivity.this, DiningActivity.class);
                         startActivity(i5);
+                        finish();
                     }
                     break;
-                case R.id.clock:
+                case R.id.clock:    //设置响铃
                     AlertDialog.Builder adb = new AlertDialog.Builder(OrderInformationActivity.this);
-                    adb.setTitle("请设置闹钟距离您？号响应");
-                    edittext = new EditText(OrderInformationActivity.this);
-                    LinearLayoutCompat.LayoutParams params = new LinearLayoutCompat.LayoutParams(50,20);
-
-                    edittext.setLayoutParams(params);
+                    adb.setTitle("请设置闹钟,");
+                    final EditText edittext = new EditText(OrderInformationActivity.this);
                     adb.setView(edittext);
                     adb.setPositiveButton("确定", new DialogInterface.OnClickListener() {
                         @Override
@@ -129,6 +153,12 @@ public class OrderInformationActivity extends AppCompatActivity {
                     adb.setNegativeButton("取消",null);
                     adb.create();
                     adb.show();
+                    break;
+                case R.id.stop: //停止响铃
+                    if (MyApplication.mp != null) {
+                        MyApplication.mp.stop();
+                    }
+                    break;
             }
         }
     };
@@ -136,7 +166,8 @@ public class OrderInformationActivity extends AppCompatActivity {
     private String shop_id;
     private String type;
     private String s;
-
+    private String con;
+    private Button stop;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -154,6 +185,14 @@ public class OrderInformationActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (MyApplication.mp != null) {
+            MyApplication.mp.release();
+        }
+    }
+
     private void setContent() {
         SharedPreferences spf =getSharedPreferences("Count",Context.MODE_APPEND);
 //        intent.putExtra("Context",content);
@@ -163,9 +202,9 @@ public class OrderInformationActivity extends AppCompatActivity {
 //        intent.putExtra("Mine",all1);
 //        intent.putExtra("Now",Utils.now);
         Intent i = getIntent();
+        con = i.getStringExtra("Context");
 //        shop_id = i.getStringExtra("Id");
         Utils.now = spf.getString("Now","");
-        Log.e("AAAAAAAAAAaa",Utils.now);
         all = i.getStringExtra("Mine");
         add = i.getStringExtra("Address");
         name = i.getStringExtra("Name");
@@ -176,6 +215,10 @@ public class OrderInformationActivity extends AppCompatActivity {
         int i1 = Integer.parseInt(all)-Integer.parseInt(Utils.now);
         tv3.setText(i1+"");//还需等待
         tv_address.setText(add);//地址
+        if (con.equals("222")) {
+            clock.setVisibility(View.GONE);
+            stop.setVisibility(View.VISIBLE);
+        }
 
 //        Log.e("********",shop_id+type);
 //        new Thread(new Runnable() {
@@ -198,6 +241,7 @@ public class OrderInformationActivity extends AppCompatActivity {
         btn.setOnClickListener(mListener);
         btn1.setOnClickListener(mListener);
         clock.setOnClickListener(mListener);
+        stop.setOnClickListener(mListener);
     }
 
     private void finView() {
@@ -209,5 +253,6 @@ public class OrderInformationActivity extends AppCompatActivity {
         tv3 = (TextView)findViewById(R.id.tv_num2);//还需等待
         tv_address = (TextView)findViewById(R.id.tv_address);
         clock = (Button)findViewById(R.id.clock);
+        stop = (Button) findViewById(R.id.stop);
     }
 }

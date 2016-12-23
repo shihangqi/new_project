@@ -65,10 +65,10 @@ public class LoginActivity extends AppCompatActivity {
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             if(response_server.equals("loginfail")){
-
                 Toast.makeText(LoginActivity.this,"登录失败",Toast.LENGTH_SHORT).show();
                 Intent i = new Intent(LoginActivity.this,LoginActivity.class);
                 startActivity(i);
+                finish();
             }else{
                 Toast.makeText(LoginActivity.this,"登录成功",Toast.LENGTH_SHORT).show();
                 Utils.id = response_server;
@@ -77,6 +77,7 @@ public class LoginActivity extends AppCompatActivity {
                 Intent i = new Intent(LoginActivity.this,MainActivity.class);
 
                 startActivity(i);
+                finish();
             }
         }
     };
@@ -89,6 +90,7 @@ public class LoginActivity extends AppCompatActivity {
                     Intent i = new Intent();
                     i.setClass(LoginActivity.this,MainActivity.class);
                     startActivity(i);
+                    finish();
                     break;
                 case R.id.loginB2:
                     if(!TextUtils.isEmpty(et_te1.getText().toString().trim())){
@@ -138,6 +140,7 @@ public class LoginActivity extends AppCompatActivity {
                     if (cls != null) {
                         Intent intent = new Intent(c, cls);
                         c.startActivity(intent);
+                        finish();
                     }
                     break;
                 case R.id.loginB5:
@@ -416,9 +419,9 @@ public class LoginActivity extends AppCompatActivity {
                         public void run() {
                             Httpss h = new Httpss();
                             NameValuePair pair = new BasicNameValuePair("user_tel",et_te1.getText().toString());
-                            NameValuePair pair1 = new BasicNameValuePair("user_tel",Utils.push_id);
+                            NameValuePair pair1 = new BasicNameValuePair("push_id",Utils.push_id);
                             response_server = h.setAndGet(Utils.USER_URL+"login",pair,pair1);
-                            Log.e("Message",response_server);
+                            Log.e("Message",response_server + "123456");
                         }
                     }).start();
                     Message msg1 =new Message();

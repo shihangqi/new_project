@@ -48,7 +48,7 @@
             android:textSize="18sp"
             android:text="不用等号的APP"
             android:layout_width="wrap_content"
-            android:layout_height="20dp" />
+            android:layout_height="25dp" />
     </LinearLayout>
     <TextView
         android:padding="90dp"

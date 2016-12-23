@@ -68,19 +68,19 @@ public class HomeFragment extends Fragment {
     private int oldPosition = 0;
     //存放图片的id
     private int[] imageIds = new int[]{
-            R.drawable.lza,
-            R.drawable.lzb,
-            R.drawable.lza,
-            R.drawable.lzb,
-            R.drawable.lze
+            R.drawable.page3,
+            R.drawable.page2,
+            R.drawable.page4,
+            R.drawable.page1,
+            R.drawable.page5
     };
     //存放图片的标题
     private String[]  titles = new String[]{
-            "巩俐不低俗，我就不能低俗",
-            "扑树又回来啦！再唱经典老歌引万人大合唱",
-            "揭秘北京电影如何升级",
-            "乐视网TV版大派送",
-            "热血屌丝的反杀"
+            "休闲时光怎么少得了美味可口的甜品",
+            "一看就开始流口水",
+            "好吃的曲奇饼干 仿佛从空气中透",
+            "舌尖上的盛宴 吃货的世界",
+            "突然好想吃蛋糕"
     };
     private TextView title;
     private ViewPagerAdapter adapter1;
@@ -270,8 +270,6 @@ public class HomeFragment extends Fragment {
         if (resultCode == getActivity().RESULT_OK) {
             Bundle bundle = data.getExtras();
             final String scanResult = bundle.getString("result");
-//            resultTextView.setText(scanResult);
-            Log.e("--------石航琪",scanResult);
             Intent intent = new Intent();
             intent.setClass(getActivity().getApplicationContext(), DiningInformationActivity.class);
             intent.putExtra("Context","HomeFragment");

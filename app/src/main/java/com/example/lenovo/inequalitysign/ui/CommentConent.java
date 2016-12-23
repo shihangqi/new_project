@@ -68,6 +68,7 @@ public class CommentConent extends AppCompatActivity {
                 Intent i = new Intent();
                 i.setClass(CommentConent.this,MainActivity.class);
                 startActivity(i);
+                finish();
             }
         });
     }

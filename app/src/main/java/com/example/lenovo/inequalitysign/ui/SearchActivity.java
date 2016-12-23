@@ -61,6 +61,7 @@ public class SearchActivity extends AppCompatActivity {
                     Intent i  = new Intent();
                     i.setClass(SearchActivity.this,MainActivity.class);
                     startActivity(i);
+                    finish();
                     break;
                 case R.id.btn_search:
                     //如果搜索框没有内容  则不起作用，否则 显示搜索到的结果
@@ -76,6 +77,7 @@ public class SearchActivity extends AppCompatActivity {
                                 Utils.flag = 1;
                                 ii.setClass(SearchActivity.this,MainActivity.class);
                                 startActivity(ii);
+                                finish();
                             }
                         });
                         adb.create();

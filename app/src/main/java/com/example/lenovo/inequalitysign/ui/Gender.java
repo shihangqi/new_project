@@ -47,6 +47,7 @@ public class Gender extends AppCompatActivity {
                     Intent i = new Intent();
                     i.setClass(Gender.this,MineProfileActivity.class);
                     startActivity(i);
+                    finish();
                     break;
                 case R.id.genderB2:
 
@@ -66,6 +67,7 @@ public class Gender extends AppCompatActivity {
                     Intent ii = new Intent();
                     ii.setClass(Gender.this,MineProfileActivity.class);
                     startActivity(ii);
+                    finish();
                     break;
                 case R.id.genderB3:
                     new Thread(new Runnable() {
@@ -83,6 +85,7 @@ public class Gender extends AppCompatActivity {
                     Intent intent = new Intent();
                     intent.setClass(Gender.this,MineProfileActivity.class);
                     startActivity(intent);
+                    finish();
                     break;
             }
         }

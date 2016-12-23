@@ -22,6 +22,13 @@
 <uses-permission android:name="android.permission.GET_TASKS"/>
 
 
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
+
+
+
 <application
     android:name=".adapter.MyApplication"
     android:allowBackup="true"
@@ -87,7 +94,7 @@
             <category android:name="android.intent.category.BROWSABLE"/>
 
             <data android:scheme="tencent222222"/>
-            <!-- 100380359 100381104 222222 -->
+
         </intent-filter>
     </activity>
     <activity
@@ -116,6 +123,7 @@
 </application>
 
 </manifest>
+
 
 
 

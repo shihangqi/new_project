@@ -3,7 +3,7 @@
               xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:background="#f0f0f0"
+              android:background="#ffffff"
               android:orientation="vertical"
               tools:context="com.example.lenovo.inequalitysign.ui.Index">
 
@@ -29,7 +29,7 @@
             android:textSize="18sp"
             android:text="不用等号的APP"
             android:layout_width="wrap_content"
-            android:layout_height="20dp" />
+            android:layout_height="25dp" />
     </LinearLayout>
     <TextView
         android:padding="90dp"

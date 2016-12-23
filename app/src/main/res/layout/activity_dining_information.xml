@@ -180,21 +180,28 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        >
+        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="3"
+            android:layout_height="match_parent"/>
         <Button
             android:id="@+id/btn_qh"
-            android:layout_width="160dp"
-            android:layout_height="60dp"
-            android:layout_marginTop="0dp"
-            android:layout_marginLeft="120dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
             android:textSize="20dp"
             android:background="@drawable/zzkshape"
             android:text="立即取号"/>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="3"
+            android:layout_height="match_parent"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        >
+        android:layout_height="55dp"
+        android:layout_marginTop="5dp">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"

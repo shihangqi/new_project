@@ -102,11 +102,16 @@ public class MineFragment extends Fragment {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
+            tv_name.setText(name);
+            ImageLoader.getInstance().displayImage(url,imageButton);
+        }
+    };
+    private Handler handler1 = new Handler(){
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
             btn.setVisibility(View.GONE);
             tv_name.setVisibility(View.VISIBLE);
             btn_exit.setVisibility(View.VISIBLE);
-            tv_name.setText(name);
-            ImageLoader.getInstance().displayImage(url,imageButton);
         }
     };
     private String url;
@@ -146,15 +151,15 @@ public class MineFragment extends Fragment {
         if (Utils.id == "") {
 
         } else {
+            Message msg =new Message();
+            handler1.sendMessage(msg);
             new Thread(new Runnable() {
                 @Override
                 public void run() {
                     Httpss http = new Httpss();
                     NameValuePair pair = new BasicNameValuePair("id", Utils.id);
                     String s = http.setAndGet(u,pair);
-                    Log.e("+++++",s);
                     try {
-                        Log.e("+++++",s);
                         JSONObject object = new JSONObject(s);
                         name = object.getString("name");
                         url = object.getString("img");
