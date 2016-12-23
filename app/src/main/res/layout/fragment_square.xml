@@ -17,7 +17,7 @@
         android:textStyle="bold" />
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
         <LinearLayout
             android:padding="10dp"
             android:layout_width="match_parent"
@@ -78,73 +78,65 @@
                     android:text="精选活动"/>
             </LinearLayout>
             <LinearLayout
-                android:layout_marginRight="5dp"
                 android:orientation="vertical"
                 android:id="@+id/LlaySquareNo1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <ImageView
-                    android:background="@drawable/xianshang"
+                    android:background="@drawable/activity"
                     android:layout_width="match_parent"
                     android:scaleType="fitXY"
                     android:layout_height="100dp"
                     android:id="@+id/iv1"/>
                 <TextView
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="2dp"
                     android:padding="10dp"
                     android:id="@+id/tv1"
-                    android:gravity="center"
-                    android:text="峨眉小镇"
+                    android:text="圣诞节枕头大战派对中奖名单公布"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <LinearLayout
-                    android:layout_marginRight="5dp"
-                    android:layout_weight="3"
-                    android:orientation="vertical"
-                    android:id="@+id/LlaySquareNo2"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content">
-                    <ImageView
-                        android:background="@drawable/tao2"
-                        android:layout_width="match_parent"
-                        android:scaleType="fitXY"
-                        android:id="@+id/iv2"
-                        android:layout_height="100dp" />
-                    <TextView
-                        android:padding="10dp"
-                        android:id="@+id/tv2"
-                        android:gravity="center"
-                        android:text="额娘春饼"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:id="@+id/LlaySquareNo2"
+                android:orientation="vertical">
+                <ImageView
+                    android:background="@drawable/activity1"
+                    android:layout_width="match_parent"
+                    android:scaleType="fitXY"
+                    android:layout_height="100dp"
+                    android:id="@+id/iv2"/>
+                <TextView
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="2dp"
+                    android:padding="10dp"
+                    android:id="@+id/tv2"
+                    android:text="获奖名单：说说你的奇葩餐厅经历"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
                 </LinearLayout>
-                <LinearLayout
-                    android:layout_marginLeft="5dp"
-                    android:layout_weight="2"
-                    android:orientation="vertical"
-                    android:id="@+id/LlaySquareNo3"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content">
-                    <ImageView
-                        android:background="@drawable/zhuo"
-                        android:scaleType="fitXY"
-                        android:id="@+id/iv3"
-                        android:layout_width="match_parent"
-                        android:layout_height="100dp" />
-                    <TextView
-                        android:padding="10dp"
-                        android:id="@+id/tv3"
-                        android:gravity="center"
-                        android:text="胖哥俩肉蟹煲"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-                </LinearLayout>
-
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/LlaySquareNo3"
+                android:orientation="vertical">
+                <ImageView
+                    android:background="@drawable/activity2"
+                    android:layout_width="match_parent"
+                    android:scaleType="fitXY"
+                    android:layout_height="100dp"
+                    android:id="@+id/iv3"/>
+                <TextView
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="2dp"
+                    android:padding="10dp"
+                    android:id="@+id/tv3"
+                    android:text="一秒线上预定"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
             </LinearLayout>
-
         </LinearLayout>
     </ScrollView>
 

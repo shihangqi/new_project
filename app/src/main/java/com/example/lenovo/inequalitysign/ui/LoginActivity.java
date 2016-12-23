@@ -65,7 +65,6 @@ public class LoginActivity extends AppCompatActivity {
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             if(response_server.equals("loginfail")){
-
                 Toast.makeText(LoginActivity.this,"登录失败",Toast.LENGTH_SHORT).show();
                 Intent i = new Intent(LoginActivity.this,LoginActivity.class);
                 startActivity(i);
@@ -420,9 +419,9 @@ public class LoginActivity extends AppCompatActivity {
                         public void run() {
                             Httpss h = new Httpss();
                             NameValuePair pair = new BasicNameValuePair("user_tel",et_te1.getText().toString());
-                            NameValuePair pair1 = new BasicNameValuePair("user_tel",Utils.push_id);
+                            NameValuePair pair1 = new BasicNameValuePair("push_id",Utils.push_id);
                             response_server = h.setAndGet(Utils.USER_URL+"login",pair,pair1);
-                            Log.e("Message",response_server);
+                            Log.e("Message",response_server + "123456");
                         }
                     }).start();
                     Message msg1 =new Message();

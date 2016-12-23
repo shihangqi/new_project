@@ -270,8 +270,6 @@ public class HomeFragment extends Fragment {
         if (resultCode == getActivity().RESULT_OK) {
             Bundle bundle = data.getExtras();
             final String scanResult = bundle.getString("result");
-//            resultTextView.setText(scanResult);
-            Log.e("--------石航琪",scanResult);
             Intent intent = new Intent();
             intent.setClass(getActivity().getApplicationContext(), DiningInformationActivity.class);
             intent.putExtra("Context","HomeFragment");
