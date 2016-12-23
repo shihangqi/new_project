@@ -160,7 +160,6 @@ public class DiningInformationActivity extends AppCompatActivity {
                                 state =1;
                             }
                         });
-                        Log.e("+=====",type_name1+"111");
                         int i1 = Integer.parseInt(alltype1);
                         int k1 = Integer.parseInt(nowtype1);
                         tv1.setText(type_name1);
@@ -265,10 +264,12 @@ public class DiningInformationActivity extends AppCompatActivity {
                                 Intent i2 = new Intent();
                                 i2.setClass(DiningInformationActivity.this,MainActivity.class);
                                 startActivity(i2);
-                            }else{
+                            }else if(content.equals("MineOrderActivity")){
+                                Intent i4 = new Intent();
+                                i4.setClass(DiningInformationActivity.this,MineOrderActivity.class);
+                                startActivity(i4);
+                            } else{
                                 Intent i3 = new Intent();
-
-
                                 i3.setClass(DiningInformationActivity.this,DiningActivity.class);
                                 startActivity(i3);
                             }

@@ -31,7 +31,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class OrderInformationActivity extends AppCompatActivity {
-    private String u = Utils.SHOP_URL+"join";
+    private String u = Utils.SHOP_URL+"cancelorder";
     private ImageButton btn1;
     private Button btn;
     private String all;
@@ -43,6 +43,18 @@ public class OrderInformationActivity extends AppCompatActivity {
     private TextView tv2;
     private TextView tv3;
     private TextView tv_address;
+    private String message;
+    private Handler mHandler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            if(message.equals("ok")){
+                Toast.makeText(OrderInformationActivity.this,"取消订单成功",Toast.LENGTH_SHORT).show();
+            }else{
+                Toast.makeText(OrderInformationActivity.this,"取消订单失败",Toast.LENGTH_SHORT).show();
+            }
+        }
+    };
 //    private Handler mHandler = new Handler(){
 //        @Override
 //        public void handleMessage(Message msg) {
@@ -95,6 +107,19 @@ public class OrderInformationActivity extends AppCompatActivity {
 
                     break;
                 case R.id.btn_qxph:
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Httpss http = new Httpss();
+                            NameValuePair pair = new BasicNameValuePair("shop_id",shop_id);
+                            NameValuePair pair1 =  new BasicNameValuePair("type",type);
+                            NameValuePair pair2 = new BasicNameValuePair("num",all);
+                            NameValuePair pair3 = new BasicNameValuePair("user_id",Utils.id);
+                            message = http.setAndGet(u,pair,pair1,pair2,pair3);
+                            Message msg = new Message();
+                            mHandler.sendMessage(msg);
+                        }
+                    }).start();
                     Intent i3 = getIntent();
                     String context = i3.getStringExtra("Context");
                     if(context.equals("HomeFragment")){
