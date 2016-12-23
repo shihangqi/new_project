@@ -105,7 +105,8 @@ public class Httpss {
                 String urll = object.getString("shop_img_small");
                 String name = object.getString("shop_name");
                 String intro = object.getString("shop_description");
-                ls.add(new Dining(shop_id,urll,name,intro));
+                String address = object.getString("shop_address");
+                ls.add(new Dining(shop_id,urll,name,intro,address));
             }
         } catch (JSONException e) {
             e.printStackTrace();

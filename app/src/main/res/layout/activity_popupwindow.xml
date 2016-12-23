@@ -13,12 +13,13 @@
         <TextView
             android:clickable="true"
             android:background="@android:color/white"
+            android:textColor="@android:color/black"
             android:id="@+id/TvPopupCamera"
             android:layout_width="114dp"
             android:layout_height="50dp"
             android:gravity="center"
             android:text="拍摄实景"
-            android:textColor="@android:color/black"
+
             android:textSize="18sp" />
 
         <View
