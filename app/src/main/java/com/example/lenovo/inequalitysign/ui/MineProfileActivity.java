@@ -79,6 +79,7 @@ public class MineProfileActivity extends AppCompatActivity {
                     Utils.flag = 4;
                     i.setClass(MineProfileActivity.this,MainActivity.class);
                     startActivity(i);
+                    finish();
                     break;
                 case R.id.mine_profileB2:
                     //设置头像 从本地选择或者通过照相获取
@@ -89,12 +90,14 @@ public class MineProfileActivity extends AppCompatActivity {
                     Intent ii = new Intent();
                     ii.setClass(MineProfileActivity.this,EditnameActivity.class);
                     startActivity(ii);
+                    finish();
                     break;
                 case R.id.mine_profileB4:
                     //设置性别
                     Intent intent = new Intent();
                     intent.setClass(MineProfileActivity.this,Gender.class);
                     startActivity(intent);
+                    finish();
                     break;
             }
         }

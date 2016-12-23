@@ -69,6 +69,7 @@ public class LoginActivity extends AppCompatActivity {
                 Toast.makeText(LoginActivity.this,"登录失败",Toast.LENGTH_SHORT).show();
                 Intent i = new Intent(LoginActivity.this,LoginActivity.class);
                 startActivity(i);
+                finish();
             }else{
                 Toast.makeText(LoginActivity.this,"登录成功",Toast.LENGTH_SHORT).show();
                 Utils.id = response_server;
@@ -77,6 +78,7 @@ public class LoginActivity extends AppCompatActivity {
                 Intent i = new Intent(LoginActivity.this,MainActivity.class);
 
                 startActivity(i);
+                finish();
             }
         }
     };
@@ -89,6 +91,7 @@ public class LoginActivity extends AppCompatActivity {
                     Intent i = new Intent();
                     i.setClass(LoginActivity.this,MainActivity.class);
                     startActivity(i);
+                    finish();
                     break;
                 case R.id.loginB2:
                     if(!TextUtils.isEmpty(et_te1.getText().toString().trim())){
@@ -138,6 +141,7 @@ public class LoginActivity extends AppCompatActivity {
                     if (cls != null) {
                         Intent intent = new Intent(c, cls);
                         c.startActivity(intent);
+                        finish();
                     }
                     break;
                 case R.id.loginB5:

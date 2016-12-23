@@ -20,6 +20,7 @@ public class SettingAboutActivity extends AppCompatActivity {
                     Utils.flag =4;
                     Intent i = new Intent(SettingAboutActivity.this,MainActivity.class);
                     startActivity(i);
+                    finish();
             }
         }
     };
@@ -33,6 +34,7 @@ public class SettingAboutActivity extends AppCompatActivity {
     }
 
     private void setOnlick() {
+        iv_btn.setOnClickListener(mListener);
     }
 
     private void findView() {

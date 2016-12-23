@@ -47,6 +47,7 @@ public class EditnameActivity extends AppCompatActivity {
                     Intent ii = new Intent();
                     ii.setClass(EditnameActivity.this,MineProfileActivity.class);
                     startActivity(ii);
+                    finish();
                     break;
                 case R.id.editnameB2:
                     new Thread(new Runnable() {
@@ -64,6 +65,7 @@ public class EditnameActivity extends AppCompatActivity {
                     Intent i = new Intent();
                     i.setClass(EditnameActivity.this,MineProfileActivity.class);
                     startActivity(i);
+                    finish();
                     break;
             }
         }
