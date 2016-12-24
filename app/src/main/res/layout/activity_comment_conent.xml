@@ -8,33 +8,30 @@
 
     tools:context="com.example.lenovo.inequalitysign.ui.CommentConent">
     <RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:background="@color/all">
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/all">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:textSize="25dp"
-            android:textColor="#fff"
-            android:gravity="center"
-            android:text="评论"/>
-        <ImageButton
-            android:id="@+id/C_back"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:background="@drawable/back"
-            />
-    </RelativeLayout>
-    <android.support.v4.widget.SwipeRefreshLayout
-        android:id="@+id/id_swipe_ly"
+        android:layout_height="match_parent"
+        android:textSize="25dp"
+        android:textColor="#fff"
+        android:gravity="center"
+        android:text="评论"/>
+    <ImageButton
+        android:id="@+id/C_back"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:background="@drawable/back"
+        />
+</RelativeLayout>
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <ListView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/lv">
-
-        </ListView>
-    </android.support.v4.widget.SwipeRefreshLayout>
+            android:id="@+id/lv"></ListView>
+    </LinearLayout>
 
 </LinearLayout>
