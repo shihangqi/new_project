@@ -72,6 +72,7 @@ public class CommentConent extends AppCompatActivity implements SwipeRefreshLayo
                 Intent i = new Intent();
                 i.setClass(CommentConent.this,MainActivity.class);
                 startActivity(i);
+                finish();
             }
         });
         mSwipeLayout.setOnRefreshListener(this);

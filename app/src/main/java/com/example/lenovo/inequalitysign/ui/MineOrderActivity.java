@@ -49,6 +49,7 @@ public class MineOrderActivity extends AppCompatActivity implements SwipeRefresh
             lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                    Log.e("+++++1",ls.get(i).getStatus());
                     if("1".equals(ls.get(i).getStatus())){
                         Intent i1 = new Intent(MineOrderActivity.this,DiningInformationActivity.class);
                         i1.putExtra("Name",ls.get(i).getTitle());
@@ -101,6 +102,7 @@ public class MineOrderActivity extends AppCompatActivity implements SwipeRefresh
                 Utils.flag = 4;
                 intent.setClass(MineOrderActivity.this,MainActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
         mSwipeLayout.setOnRefreshListener(this);

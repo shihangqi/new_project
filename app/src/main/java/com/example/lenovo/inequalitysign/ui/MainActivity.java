@@ -71,11 +71,8 @@ public class MainActivity extends AppCompatActivity {
                     ft.replace(R.id.container,sf);
                     break;
                 case R.id.btn_fj:
-                    if(nf == null){
-                        nf = new NearbyFragment();
-                    }
-                    changeimg(3);
-                    ft.replace(R.id.container,nf);
+                    Intent i =new Intent(MainActivity.this,NearbyActivity.class);
+                    startActivity(i);
                     break;
                 case R.id.btn_wd:
                     if(mf == null){
@@ -107,8 +104,8 @@ public class MainActivity extends AppCompatActivity {
                 setSquare();
                 break;
             case 3:
-                changeimg(3);
-                setNear();
+//                changeimg(3);
+//                setNear();
                 break;
             case 4:
                 changeimg(4);
@@ -130,17 +127,17 @@ public class MainActivity extends AppCompatActivity {
         ll.invalidate();
     }
 
-    private void setNear() {
-        android.app.FragmentManager fm = getFragmentManager();
-        FragmentTransaction ft =fm.beginTransaction();
-        if (nf == null) {
-            nf = new NearbyFragment();
-        }
-
-        ft.replace(R.id.container,nf);
-        ft.commit();
-        ll.invalidate();
-    }
+//    private void setNear() {
+//        android.app.FragmentManager fm = getFragmentManager();
+//        FragmentTransaction ft =fm.beginTransaction();
+//        if (nf == null) {
+//            nf = new NearbyFragment();
+//        }
+//
+//        ft.replace(R.id.container,nf);
+//        ft.commit();
+//        ll.invalidate();
+//    }
 
     private void setSquare() {
         android.app.FragmentManager fm = getFragmentManager();

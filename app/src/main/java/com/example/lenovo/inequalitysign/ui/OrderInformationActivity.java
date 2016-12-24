@@ -95,12 +95,14 @@ public class OrderInformationActivity extends AppCompatActivity {
                     if(start1.equals("MineOrderActivity")){
                         Intent intent=new Intent(OrderInformationActivity.this,MineOrderActivity.class);
                         startActivity(intent);
+                        finish();
                     }else{
                         Intent intent=new Intent(OrderInformationActivity.this,DiningInformationActivity.class);
                         intent.putExtra("Name",name1);
                         intent.putExtra("Context",start1);
                         intent.putExtra("Id",id);
                         startActivity(intent);
+                        finish();
                     }
 
                     break;
@@ -125,10 +127,12 @@ public class OrderInformationActivity extends AppCompatActivity {
                         Utils.flag =1;
                         i4.setClass(OrderInformationActivity.this,MainActivity.class);
                         startActivity(i4);
+                        finish();
                     }else{
                         Intent i5 = new Intent();
                         i5.setClass(OrderInformationActivity.this, DiningActivity.class);
                         startActivity(i5);
+                        finish();
                     }
                     break;
                 case R.id.clock:    //设置响铃

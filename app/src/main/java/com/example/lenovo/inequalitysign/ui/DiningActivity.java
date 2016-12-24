@@ -95,6 +95,7 @@ public class DiningActivity extends Activity implements SwipeRefreshLayout.OnRef
                     Utils.flag = 1;
                     i.setClass(DiningActivity.this,MainActivity.class);
                     startActivity(i);
+                    finish();
                     break;
                 case R.id.ct:
                     //展示餐厅列表数据

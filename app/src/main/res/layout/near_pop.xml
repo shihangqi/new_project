@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="20dp"
+        android:orientation="vertical"
+        android:layout_alignParentRight="true">
+        <TextView
+            android:layout_width="160dp"
+            android:textSize="20dp"
+            android:padding="10dp"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:text="文本覆盖物"
+            android:background="@android:color/white"
+            android:textColor="@android:color/black"
+            android:id="@+id/id_map_text" />
+        <TextView
+            android:layout_width="160dp"
+            android:textSize="20dp"
+            android:padding="10dp"
+            android:background="@android:color/white"
+            android:textColor="@android:color/black"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:text="图标覆盖物"
+            android:id="@+id/id_map_mark"/>
+        <TextView
+            android:layout_width="160dp"
+            android:textSize="20dp"
+            android:padding="10dp"
+            android:background="@android:color/white"
+            android:textColor="@android:color/black"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:text="移动到我的位置"
+            android:id="@+id/id_map_mine"/>
+        <TextView
+            android:layout_width="160dp"
+            android:textSize="20dp"
+            android:padding="10dp"
+            android:background="@android:color/white"
+            android:textColor="@android:color/black"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:text="清除覆盖物"
+            android:id="@+id/id_map_clear"/>
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>

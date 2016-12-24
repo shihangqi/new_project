@@ -73,6 +73,7 @@ public class RankActivity extends AppCompatActivity implements SwipeRefreshLayou
                 Intent intent = new Intent();
                 intent.setClass(RankActivity.this,MainActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
         mSwipeLayout.setOnRefreshListener(this);
