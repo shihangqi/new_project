@@ -123,7 +123,7 @@
                 android:id="@+id/LlaySquareNo3"
                 android:orientation="vertical">
                 <ImageView
-                    android:background="@drawable/activity2"
+                    android:background="@drawable/activit2"
                     android:layout_width="match_parent"
                     android:scaleType="fitXY"
                     android:layout_height="100dp"
