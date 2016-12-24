@@ -36,6 +36,7 @@ import java.util.List;
 
 /**
  * Created by ff on 2016/12/3.
+ * 已消费订单的适配器
  */
 public class OrderedAdapter extends BaseAdapter {
 
@@ -116,6 +117,7 @@ public class OrderedAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, CommentAddActivity.class);
+                intent.putExtra("shopid", ls.get(i).getShop_id());
                 context.startActivity(intent);
             }
         });

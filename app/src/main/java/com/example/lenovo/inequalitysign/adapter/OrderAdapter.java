@@ -35,6 +35,7 @@ import java.util.List;
 
 /**
  * Created by ff on 2016/12/3.
+ * 可使用订单的适配器
  */
 public class OrderAdapter extends BaseAdapter {
 
