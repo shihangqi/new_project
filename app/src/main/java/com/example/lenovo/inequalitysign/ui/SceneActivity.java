@@ -15,6 +15,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.provider.MediaStore;
 import android.support.v4.content.res.ResourcesCompat;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
@@ -31,6 +32,7 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.lenovo.inequalitysign.R;
 import com.example.lenovo.inequalitysign.Utils.Utils;
@@ -43,7 +45,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SceneActivity extends AppCompatActivity {
+public class SceneActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener{
     //请求相机
     private static final int REQUEST_CAPTURE = 100;
     //请求相册
@@ -52,11 +54,14 @@ public class SceneActivity extends AppCompatActivity {
     private File tempFile;
 
     private String u = Utils.SHOP_URL+"scene";
+    private static final int REFRESH_COMPLETE = 0X110;
+    private SwipeRefreshLayout mSwipeLayout;
     private List<Scene> ls = new ArrayList<>();
     private RecyclerView recyclerView;
     private ImageButton btn_back;
     private ImageButton btn_menu;
     private LinearLayout mLlay;
+    private int flag;
     private Handler mHandler = new Handler(){
         @Override
         public void handleMessage(Message msg) {
@@ -77,8 +82,14 @@ public class SceneActivity extends AppCompatActivity {
             //设置adapter
             recyclerView.setAdapter(adapter);
             //设置item之间的间隔
-            SpacesItemDecoration decoration=new SpacesItemDecoration(15);
-            recyclerView.addItemDecoration(decoration);
+            if(flag == 1){
+
+            }else{
+                SpacesItemDecoration decoration=new SpacesItemDecoration(15);
+                recyclerView.addItemDecoration(decoration);
+            }
+
+
 
         }
     };
@@ -266,11 +277,14 @@ public class SceneActivity extends AppCompatActivity {
     private void setOnClick() {
         btn_back.setOnClickListener(mListener);
         btn_menu.setOnClickListener(mListener);
+        mSwipeLayout.setOnRefreshListener(this);
     }
 
     private void findView() {
         btn_back = (ImageButton)findViewById(R.id.S_back);
         btn_menu = (ImageButton)findViewById(R.id.S_menu);
+        mSwipeLayout = (SwipeRefreshLayout)findViewById(R.id.id_swipe_ly);
+        mSwipeLayout.setColorSchemeResources(android.R.color.holo_blue_light, android.R.color.holo_red_light, android.R.color.holo_orange_light, android.R.color.holo_green_light);
     }
 
     private void initData() {
@@ -288,5 +302,26 @@ public class SceneActivity extends AppCompatActivity {
         }).start();
 
     }
+
+    public void onRefresh() {
+        flag = 1;
+        initData();
+        Handler1.sendEmptyMessageDelayed(REFRESH_COMPLETE, 1000);
+    }
+    private Handler Handler1 = new Handler()
+    {
+        public void handleMessage(android.os.Message msg)
+        {
+            switch (msg.what)
+            {
+                case REFRESH_COMPLETE:
+                    Toast.makeText(SceneActivity.this,"刷新成功",Toast.LENGTH_SHORT).show();
+                    mSwipeLayout.setRefreshing(false);
+                    break;
+
+            }
+        };
+    };
+
 
 }

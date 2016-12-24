@@ -45,9 +45,14 @@ tools:context="com.example.lenovo.inequalitysign.ui.MainActivity">
             android:layout_weight="1"
             android:layout_height="match_parent"></LinearLayout>
     </LinearLayout>
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/id_swipe_ly"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
 <ScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <LinearLayout
         android:id="@+id/refreshable_LL"
         android:longClickable="true"
@@ -173,7 +178,7 @@ tools:context="com.example.lenovo.inequalitysign.ui.MainActivity">
     </LinearLayout>
 
 </ScrollView>
-
+    </android.support.v4.widget.SwipeRefreshLayout>
 
 </LinearLayout>
 

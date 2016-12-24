@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,6 +14,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.lenovo.inequalitysign.R;
 import com.example.lenovo.inequalitysign.Utils.Utils;
@@ -26,9 +28,11 @@ import org.apache.http.message.BasicNameValuePair;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MineOrderActivity extends AppCompatActivity {
+public class MineOrderActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener{
     private String u = Utils.USER_URL+"order";
     private String u1 =Utils.USER_URL+ "deleteorder";
+    private static final int REFRESH_COMPLETE = 0X110;
+    private SwipeRefreshLayout mSwipeLayout;
     private List<Order> ls = new ArrayList<>();
     private ImageButton btn_back;
     private ListView lv;
@@ -99,10 +103,33 @@ public class MineOrderActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        mSwipeLayout.setOnRefreshListener(this);
     }
 
     private void findView() {
         btn_back = (ImageButton)findViewById(R.id.order_back);
         lv = (ListView)findViewById(R.id.lv);
+        mSwipeLayout = (SwipeRefreshLayout)findViewById(R.id.id_swipe_ly);
+        mSwipeLayout.setColorSchemeResources(android.R.color.holo_blue_light, android.R.color.holo_red_light, android.R.color.holo_orange_light, android.R.color.holo_green_light);
+
     }
+
+    public void onRefresh() {
+        setContent();
+        Handler1.sendEmptyMessageDelayed(REFRESH_COMPLETE, 1000);
+    }
+    private Handler Handler1 = new Handler()
+    {
+        public void handleMessage(android.os.Message msg)
+        {
+            switch (msg.what)
+            {
+                case REFRESH_COMPLETE:
+                    Toast.makeText(MineOrderActivity.this,"刷新成功",Toast.LENGTH_SHORT).show();
+                    mSwipeLayout.setRefreshing(false);
+                    break;
+
+            }
+        };
+    };
 }

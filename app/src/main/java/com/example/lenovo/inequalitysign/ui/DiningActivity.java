@@ -7,12 +7,14 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.lenovo.inequalitysign.R;
 import com.example.lenovo.inequalitysign.Utils.Utils;
@@ -26,10 +28,12 @@ import org.apache.http.message.BasicNameValuePair;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DiningActivity extends Activity {
+public class DiningActivity extends Activity implements SwipeRefreshLayout.OnRefreshListener{
     private  String u = Utils.SHOP_URL+"line_dining";
     private String u1 = Utils.SHOP_URL+"line_hall";
 
+    private static final int REFRESH_COMPLETE = 0X110;
+    private SwipeRefreshLayout mSwipeLayout;
     private ImageButton btn;
     private Button btn1;
     private Button btn2;
@@ -172,6 +176,7 @@ public class DiningActivity extends Activity {
         btn.setOnClickListener(mListener);
         btn1.setOnClickListener(mListener);
         btn2.setOnClickListener(mListener);
+        mSwipeLayout.setOnRefreshListener(this);
     }
 
     private void findView() {
@@ -179,5 +184,25 @@ public class DiningActivity extends Activity {
         btn=(ImageButton)findViewById(R.id.back1);
         btn1 = (Button)findViewById(R.id.ct);
         lv = (ListView)findViewById(R.id.Lv);
+        mSwipeLayout = (SwipeRefreshLayout)findViewById(R.id.id_swipe_ly);
+        mSwipeLayout.setColorSchemeResources(android.R.color.holo_blue_light, android.R.color.holo_red_light, android.R.color.holo_orange_light, android.R.color.holo_green_light);
     }
+    public void onRefresh() {
+        displayDining();
+        Handler1.sendEmptyMessageDelayed(REFRESH_COMPLETE, 1000);
+    }
+    private Handler Handler1 = new Handler()
+    {
+        public void handleMessage(android.os.Message msg)
+        {
+            switch (msg.what)
+            {
+                case REFRESH_COMPLETE:
+                    Toast.makeText(DiningActivity.this,"刷新成功",Toast.LENGTH_SHORT).show();
+                    mSwipeLayout.setRefreshing(false);
+                    break;
+
+            }
+        };
+    };
 }

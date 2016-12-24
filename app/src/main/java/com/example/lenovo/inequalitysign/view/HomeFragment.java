@@ -11,6 +11,7 @@ import android.app.Fragment;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -26,6 +27,7 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.lenovo.inequalitysign.R;
 import com.example.lenovo.inequalitysign.Utils.Utils;
@@ -50,13 +52,15 @@ import java.util.concurrent.TimeUnit;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
     private String u = Utils.SHOP_URL+"home";
+    private static final int REFRESH_COMPLETE = 0X110;
+    private SwipeRefreshLayout mSwipeLayout;
+
     private View view;
     private ImageButton btn1;
     private ImageButton btn2;
     private Button btn3;
-
     private ListView lv;
     private int currentId = 0;
     private DiningAdapter adapter;
@@ -110,6 +114,19 @@ public class HomeFragment extends Fragment {
             });
 
         }
+    };
+    public Handler Handler1 = new Handler()
+    {
+        public void handleMessage(android.os.Message msg)
+        {
+            switch (msg.what)
+            {
+                case REFRESH_COMPLETE:
+                    mSwipeLayout.setRefreshing(false);
+                    break;
+
+            }
+        };
     };
     private TextView tv_img;
     private TextView pop1;
@@ -266,7 +283,6 @@ public class HomeFragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        Log.e("------------","1");
         if (resultCode == getActivity().RESULT_OK) {
             Bundle bundle = data.getExtras();
             final String scanResult = bundle.getString("result");
@@ -310,8 +326,8 @@ public class HomeFragment extends Fragment {
             scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
             scheduledExecutorService.scheduleWithFixedDelay(
                     new ViewPageTask(),
-                    2,
-                    2,
+                    4,
+                    4,
                     TimeUnit.SECONDS);
             Utils.Flag = 1;
         }
@@ -464,6 +480,7 @@ public class HomeFragment extends Fragment {
         pop2.setOnClickListener(mListener);
         pop3.setOnClickListener(mListener);
         pop4.setOnClickListener(mListener);
+        mSwipeLayout.setOnRefreshListener(this);
     }
 
     /**
@@ -480,7 +497,7 @@ public class HomeFragment extends Fragment {
         pop3= (TextView)view1.findViewById(R.id.pop3);
         pop4 = (TextView)view1.findViewById(R.id.pop4);
         mViewPaper = (ViewPager)view.findViewById(R.id.vp);
-
+        mSwipeLayout = (SwipeRefreshLayout)view.findViewById(R.id.id_swipe_ly);
         //显示的图片
         images = new ArrayList<ImageView>();
         for(int i = 0; i < imageIds.length; i++){
@@ -497,8 +514,26 @@ public class HomeFragment extends Fragment {
         dots.add(view.findViewById(R.id.dot_4));
 
         title = (TextView)view.findViewById(R.id.title);
-
+        mSwipeLayout.setColorSchemeResources(android.R.color.holo_blue_light, android.R.color.holo_red_light, android.R.color.holo_orange_light, android.R.color.holo_green_light);
     }
+
+    @Override
+    public void onRefresh() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Httpss http = new Httpss();
+                NameValuePair pair = new BasicNameValuePair("city",Utils.city);
+                String s = http.setAndGet(u,pair);
+                ls = http.parser(s);
+                Message msg = new Message();
+                mHandler.sendMessage(msg);
+            }
+        }).start();
+        Toast.makeText(getActivity(),"刷新成功",Toast.LENGTH_SHORT).show();
+        Handler1.sendEmptyMessageDelayed(REFRESH_COMPLETE, 1000);
+    }
+
     /**
      * 自定义Adapter
      * @author liuyazhuang
@@ -571,5 +606,7 @@ public class HomeFragment extends Fragment {
     public void onStop() {
         // TODO Auto-generated method stub
         super.onStop();
+        Handler1.sendEmptyMessage(REFRESH_COMPLETE);
     }
+
 }
