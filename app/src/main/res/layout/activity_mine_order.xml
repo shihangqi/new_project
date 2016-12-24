@@ -36,10 +36,66 @@
             android:background="@drawable/back"/>
     </RelativeLayout>
 </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal"
+        android:background="@drawable/tvbar"
+        android:layout_width="match_parent"
+        android:layout_height="45dp">
+        <LinearLayout
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/TvUse"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:paddingTop="10dp"
+                android:paddingBottom="2dp"
+                android:textSize="18sp"
+                android:textColor="@color/all"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="可使用"/>
+            <View
+                android:id="@+id/Vcolor1"
+                android:layout_gravity="center"
+                android:layout_width="60dp"
+                android:layout_height="2dp"
+                android:background="@color/all"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/TvUsed"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:paddingTop="10dp"
+                android:paddingBottom="2dp"
+                android:textSize="18sp"
+                android:textColor="@color/grey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="已消费"/>
+            <View
+                android:id="@+id/Vcolor2"
+                android:visibility="gone"
+                android:layout_gravity="center"
+                android:layout_width="60dp"
+                android:layout_height="2dp"
+                android:background="@color/all"/>
+        </LinearLayout>
+    </LinearLayout>
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/id_swipe_ly"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent" >
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"

@@ -28,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
     private Button btn3;
     private HomeFragment hf;
     private MineFragment mf;
-    private NearbyFragment nf;
     private SquareFragment sf;
     private LinearLayout ll;
     private List<Dining> ls;

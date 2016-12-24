@@ -20,14 +20,10 @@
 <uses-permission android:name="android.permission.RECEIVE_SMS"/>
 <uses-permission android:name="android.permission.READ_SMS"/>
 <uses-permission android:name="android.permission.GET_TASKS"/>
-
-
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.WAKE_LOCK"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
-
-
 
 <application
     android:name=".adapter.MyApplication"
@@ -36,12 +32,15 @@
     android:label="@string/app_name"
     android:supportsRtl="true"
     android:theme="@style/AppTheme">
-    <service android:name="com.baidu.location.f"
+        <service
+            android:name="com.baidu.location.f"
              android:enabled="true"
              android:process=":remote"/>
+
     <meta-data
         android:name="com.baidu.lbsapi.API_KEY"
         android:value="Eeak8EaLkmnOr3T9IfiglUunUHvUwQc5" />
+
     <activity android:name=".ui.Index">
         <intent-filter>
             <action android:name="android.intent.action.MAIN"/>
@@ -51,32 +50,19 @@
     </activity>
     <activity android:name=".ui.SceneAddActivity"/>
     <activity android:name=".ui.ClipImageActivity"/>
-    <activity android:name=".ui.BreakActivity">
-    </activity>
-    <activity android:name=".ui.DiningActivity">
-    </activity>
-    <activity android:name=".ui.DiningInformationActivity">
-    </activity>
-    <activity android:name=".ui.EditnameActivity">
-    </activity>
-    <activity android:name=".ui.LoginActivity">
-    </activity>
-    <activity android:name=".ui.MineOrderActivity">
-    </activity>
-    <activity android:name=".ui.MineProfileActivity">
-    </activity>
-    <activity android:name=".ui.OrderInformationActivity">
-    </activity>
-    <activity android:name=".ui.SceneActivity">
-    </activity>
-    <activity android:name=".ui.SearchActivity">
-    </activity>
-    <activity android:name=".ui.CommentConent">
-    </activity>
-    <activity android:name=".ui.RankActivity">
-    </activity>
-    <activity android:name=".ui.Gender">
-    </activity>
+        <activity android:name=".ui.BreakActivity"></activity>
+        <activity android:name=".ui.DiningActivity"></activity>
+        <activity android:name=".ui.DiningInformationActivity"></activity>
+        <activity android:name=".ui.EditnameActivity"></activity>
+        <activity android:name=".ui.LoginActivity"></activity>
+        <activity android:name=".ui.MineOrderActivity"></activity>
+        <activity android:name=".ui.MineProfileActivity"></activity>
+        <activity android:name=".ui.OrderInformationActivity"></activity>
+        <activity android:name=".ui.SceneActivity"></activity>
+        <activity android:name=".ui.SearchActivity"></activity>
+        <activity android:name=".ui.CommentConent"></activity>
+        <activity android:name=".ui.RankActivity"></activity>
+        <activity android:name=".ui.Gender"></activity>
     <activity android:name=".ui.MainActivity"/>
     <activity
         android:name="com.tencent.connect.common.AssistActivity"
@@ -94,7 +80,6 @@
             <category android:name="android.intent.category.BROWSABLE"/>
 
             <data android:scheme="tencent222222"/>
-
         </intent-filter>
     </activity>
     <activity
@@ -105,25 +90,17 @@
 
     <meta-data
         android:name="UMENG_APPKEY"
-        android:value="58477e1b310c936be50003db">
-    </meta-data>
+            android:value="58477e1b310c936be50003db"></meta-data>
     <meta-data
         android:name="UMENG_MESSAGE_SECRET"
-        android:value="41598f4cf41b341ede8addfaf472b647">
-    </meta-data>
+            android:value="41598f4cf41b341ede8addfaf472b647"></meta-data>
     <meta-data
         android:name="UMENG_CHANNEL"
-        android:value="Channel ID">
-    </meta-data>
+            android:value="Channel ID"></meta-data>
 
-    <activity android:name=".ui.SettingAboutActivity">
-    </activity>
-    <activity android:name=".ui.NearbyActivity">
-    </activity>
+        <activity android:name=".ui.SettingAboutActivity"></activity>
+        <activity android:name=".ui.NearbyActivity"></activity>
+        <activity android:name=".ui.CommentAddActivity"></activity>
 </application>
 
 </manifest>
-
-
-
-

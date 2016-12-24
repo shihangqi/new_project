@@ -35,12 +35,14 @@
             android:textColor="@color/white"
             android:gravity="center"
             android:hint="输入查询信息"/>
-        <ImageButton
+        <Button
             android:id="@+id/rank_menu"
             android:layout_width="0dp"
             android:layout_weight="1"
+            android:text="全城"
+            android:background="#06c1ae"
             android:layout_height="match_parent"
-            android:background="@drawable/menu"/>
+           />
 
     </LinearLayout>
 </LinearLayout>
