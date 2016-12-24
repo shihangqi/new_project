@@ -462,7 +462,6 @@ public class DiningInformationActivity extends AppCompatActivity {
                 s = http.setAndGet(u,pair);
 
                 try {
-
                         JSONObject object = new JSONObject(s);
                         nowtype1 = object.getString("now_type1");
                         nowtype2 = object.getString("now_type2");
@@ -475,6 +474,7 @@ public class DiningInformationActivity extends AppCompatActivity {
                         alltype3 = object.getString("all_type3");
                         add1 = object.getString("shop_address");
                         img1 = object.getString("shop_img_big");
+                        name = object.getString("shop_name");
                         if(nowtype2.equals("null")){
                             what =1;
                         }else{
