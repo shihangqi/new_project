@@ -170,7 +170,8 @@ public class Httpss {
                 String time = object.getString("time");
                 String shop_name = object.getString("shop_name");
                 String  content = object.getString("content");
-                ls_Comment.add(new Comment(user_name,time,content,shop_name,star));
+                String shop_id = object.getString("shop_id");
+                ls_Comment.add(new Comment(user_name,time,content,shop_name,star,shop_id));
             }
         } catch (JSONException e) {
             e.printStackTrace();

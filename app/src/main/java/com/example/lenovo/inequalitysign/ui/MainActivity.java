@@ -2,15 +2,11 @@ package com.example.lenovo.inequalitysign.ui;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.app.Notification;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
-import android.os.Message;
-import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
@@ -18,20 +14,11 @@ import com.example.lenovo.inequalitysign.R;
 
 import com.example.lenovo.inequalitysign.Utils.Utils;
 import com.example.lenovo.inequalitysign.entity.Dining;
-import com.example.lenovo.inequalitysign.http.Httpss;
 import com.example.lenovo.inequalitysign.view.HomeFragment;
 import com.example.lenovo.inequalitysign.view.MineFragment;
-import com.example.lenovo.inequalitysign.view.NearbyFragment;
 import com.example.lenovo.inequalitysign.view.SquareFragment;
 
-import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.net.URL;
 import java.util.List;
-import java.util.logging.Handler;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -92,6 +79,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //透明状态栏
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         findView();
         setOnClick();
         switch(Utils.flag){//实现从Fragment跳转到Fragment

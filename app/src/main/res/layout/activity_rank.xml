@@ -7,10 +7,19 @@
     android:orientation="vertical"
 
     tools:context="com.example.lenovo.inequalitysign.ui.RankActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="@color/all"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp">
+
+        </LinearLayout>
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="#06c1ae">
+        android:layout_height="50dp">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -24,6 +33,7 @@
             android:layout_height="match_parent"
             android:background="@drawable/back"/>
     </RelativeLayout>
+</LinearLayout>
     <!--<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"-->
                 <!--xmlns:tools="http://schemas.android.com/tools"-->
                 <!--android:layout_width="match_parent"-->

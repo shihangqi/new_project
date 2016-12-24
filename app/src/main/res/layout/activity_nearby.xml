@@ -8,9 +8,18 @@
     tools:context="com.example.lenovo.inequalitysign.ui.NearbyActivity">
     <LinearLayout
         android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="@color/all"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp">
+
+        </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:orientation="horizontal"
-        android:background="#06c1ae">
+        android:orientation="horizontal">
         <ImageButton
             android:id="@+id/rank_back"
             android:layout_width="0dp"
@@ -34,6 +43,7 @@
             android:background="@drawable/menu"/>
 
     </LinearLayout>
+</LinearLayout>
     <com.baidu.mapapi.map.TextureMapView
         android:id="@+id/bmapView"
         android:layout_width="fill_parent"

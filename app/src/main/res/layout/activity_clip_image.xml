@@ -7,7 +7,16 @@
     android:orientation="vertical"
     android:background="@android:color/black"
     tools:context="com.example.lenovo.inequalitysign.ui.ClipImageActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="@color/all"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp">
 
+        </LinearLayout>
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -30,6 +39,7 @@
             android:textSize="25sp" />
 
     </RelativeLayout>
+    </LinearLayout>
     <!--圆形裁剪框示例
         app:clipBorderWidth="5dp"     ： 裁剪框边框宽度
         app:clipType="circle"         ： 裁剪框类型为圆形

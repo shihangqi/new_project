@@ -245,6 +245,7 @@ public class MineProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mine_profile);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         createCameraTempFile(savedInstanceState);
         findView();
         setOnClick();

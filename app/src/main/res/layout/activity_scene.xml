@@ -7,10 +7,19 @@
     android:orientation="vertical"
     android:background="#f0f0f0"
     tools:context=".ui.SceneActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="@color/all"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp">
+
+        </LinearLayout>
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="#06c1ae">
+        android:layout_height="50dp">
         <ImageButton
             android:id="@+id/S_back"
             android:layout_width="wrap_content"
@@ -24,7 +33,7 @@
             android:textSize="25dp"
             android:textColor="#fff"
             android:layout_centerInParent="true"
-            android:text="   实景"/>
+            android:text="实景"/>
         <ImageButton
             android:layout_alignParentRight="true"
             android:id="@+id/S_menu"
@@ -32,6 +41,7 @@
             android:layout_height="match_parent"
             android:background="@drawable/menu"/>
     </RelativeLayout>
+    </LinearLayout>
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/id_swipe_ly"
         android:layout_width="match_parent"

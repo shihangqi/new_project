@@ -7,6 +7,16 @@
     android:orientation="vertical"
 
     tools:context="com.example.lenovo.inequalitysign.ui.CommentConent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="@color/all"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp">
+
+        </LinearLayout>
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -25,6 +35,7 @@
             android:background="@drawable/back"
             />
     </RelativeLayout>
+ </LinearLayout>
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/id_swipe_ly"
         android:layout_width="match_parent"
