@@ -3,6 +3,12 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 24
     buildToolsVersion "24.0.2"
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+
 
     defaultConfig {
         applicationId "com.example.lenovo.inequalitysign"
@@ -40,4 +46,5 @@ dependencies {
     compile project(':libzxing')
     compile 'cn.bingoogolapple:bga-refreshlayout:1.1.7@aar'
     compile files('libs/android-async-http-1.4.6.jar')
+    compile files('libs/BaiduLBS_Android.jar')
 }

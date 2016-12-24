@@ -2,7 +2,7 @@ package com.example.lenovo.inequalitysign.ui;
 
 import android.content.Intent;
 import android.os.Handler;
-import android.support.annotation.MainThread;
+
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
