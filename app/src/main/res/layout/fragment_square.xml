@@ -6,15 +6,25 @@
     android:background="#f0f0f0"
     android:id="@+id/square_ll">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="@color/all"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp">
+
+        </LinearLayout>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/all"
         android:textSize="25dp"
         android:text="广场"
         android:textColor="#fff"
         android:gravity="center"
         android:textStyle="bold" />
+</LinearLayout>
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">

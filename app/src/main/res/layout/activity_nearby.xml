@@ -8,9 +8,18 @@
     tools:context="com.example.lenovo.inequalitysign.ui.NearbyActivity">
     <LinearLayout
         android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="@color/all"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp">
+
+        </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:orientation="horizontal"
-        android:background="#06c1ae">
+        android:orientation="horizontal">
         <ImageButton
             android:id="@+id/rank_back"
             android:layout_width="0dp"
@@ -26,14 +35,17 @@
             android:textColor="@color/white"
             android:gravity="center"
             android:hint="输入查询信息"/>
-        <ImageButton
+        <Button
             android:id="@+id/rank_menu"
             android:layout_width="0dp"
             android:layout_weight="1"
+            android:text="全城"
+            android:background="#06c1ae"
             android:layout_height="match_parent"
-            android:background="@drawable/menu"/>
+           />
 
     </LinearLayout>
+</LinearLayout>
     <com.baidu.mapapi.map.TextureMapView
         android:id="@+id/bmapView"
         android:layout_width="fill_parent"

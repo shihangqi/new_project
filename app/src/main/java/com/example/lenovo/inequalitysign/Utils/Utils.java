@@ -6,7 +6,7 @@ import android.content.SharedPreferences;
  * Created by ff on 2016/12/3.
  */
 public class Utils {
-
+    
     public static final String USER_URL = "http://10.7.86.9:8090/user/";
     public static final String SHOP_URL = "http://10.7.86.9:8090/shop/";
     public static String urlImg = USER_URL + "changeimg";

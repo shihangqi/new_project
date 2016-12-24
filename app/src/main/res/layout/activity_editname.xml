@@ -8,8 +8,14 @@
     tools:context="com.example.lenovo.inequalitysign.ui.EditnameActivity">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="70dp"
+        android:background="@color/all"
         android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp">
+
+        </LinearLayout>
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -44,7 +50,7 @@
                 android:layout_alignParentStart="true" />
 
         </RelativeLayout>
-
+</LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -52,7 +58,7 @@
             android:layout_marginTop="2dp">
             <EditText
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:id="@+id/et_name"
                 android:background="@drawable/shurukuang"
@@ -62,13 +68,12 @@
                 android:textColorHint="@color/lightgray"/>
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:text="4-20个字符，可由中英文、数字组成"
                 android:textColor="@color/gray"
                 android:layout_marginLeft="2dp"/>
 
         </LinearLayout>
-    </LinearLayout>
 
 
 </LinearLayout>

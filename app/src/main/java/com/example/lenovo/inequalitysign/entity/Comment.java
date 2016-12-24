@@ -9,13 +9,15 @@ public class Comment {
     private String comment;
     private String server;
      private int star;
+    private String shop_id;
 
-    public Comment(String user, String date, String comment, String server,int star) {
+    public Comment(String user, String date, String comment, String server,int star,String shop_id) {
         this.user = user;
         this.date = date;
         this.comment = comment;
         this.server = server;
         this.star = star;
+        this.shop_id = shop_id;
     }
 
     public int getStar() {
@@ -56,5 +58,13 @@ public class Comment {
 
     public void setServer(String server) {
         this.server = server;
+    }
+
+    public String getShop_id(){
+        return shop_id;
+    }
+
+    public void setShop_id(String shop_id) {
+        this.shop_id = shop_id;
     }
 }

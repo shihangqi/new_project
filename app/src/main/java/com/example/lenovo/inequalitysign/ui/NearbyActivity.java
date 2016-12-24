@@ -15,6 +15,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.PopupWindow;
@@ -50,16 +52,17 @@ import com.baidu.mapapi.search.geocode.OnGetGeoCoderResultListener;
 import com.baidu.mapapi.search.geocode.ReverseGeoCodeResult;
 import com.example.lenovo.inequalitysign.R;
 import com.example.lenovo.inequalitysign.Utils.Utils;
+import com.example.lenovo.inequalitysign.adapter.MarkerInfoUtil;
 import com.example.lenovo.inequalitysign.entity.Dining;
+import com.example.lenovo.inequalitysign.entity.Rank;
 import com.example.lenovo.inequalitysign.http.Httpss;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 
-import java.io.IOException;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 public class NearbyActivity extends AppCompatActivity {
     //地图试图
@@ -79,23 +82,30 @@ public class NearbyActivity extends AppCompatActivity {
     /* 最新一次的经纬度 */
     private double mCurrentLantitude;
     private double mCurrentLongitude;
-    private LatLng latLng;
+    private LatLng latLng ;
     private String s="天安门广场";
     private ImageButton rank_back;
-    private ImageButton rank_menu;
-    private List<Dining> ls = new ArrayList<>();
-    private String u = Utils.SHOP_URL+"search";
-    private TextView clear;
-    private TextView mark;
-    private TextView mine;
-    private TextView text;
+    private Button rank_menu;
+    private List<MarkerInfoUtil> list = new ArrayList<>();
+
+    private List<Rank> ls = new ArrayList<>();
+    private  String u1 = Utils.SHOP_URL+"list";
+
     private Handler mHandler = new Handler(){
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
+            mBaiduMap.clear();
             for(int i = 0; i< ls.size();i++){
-                setAdd(ls.get(i).getAddress());
+                Rank d = ls.get(i);
+                Log.e("=====","1");
+                setAdd(d.getAddress());
+                Log.e("======",latLng+"");
+//                Log.e("=====",latLng+"");
+//                list.add(new MarkerInfoUtil(d.getShop_id(),d.getShop_name(),d.getWait_num(),d.getAddress(),latLng));
             }
+
+
 
         }
     };
@@ -110,8 +120,21 @@ public class NearbyActivity extends AppCompatActivity {
                        Intent i = new Intent(NearbyActivity.this,MainActivity.class);
                        startActivity(i);
                        break;
-//                   case R.id.rank_menu:
-//                       setAdd();
+                   case R.id.rank_menu:
+                       new Thread(new Runnable() {
+                           @Override
+                           public void run() {
+                               ls.clear();
+                               Message msg = new Message();
+                               Httpss http = new Httpss();
+                               NameValuePair pair1 = new BasicNameValuePair("city",Utils.city);
+                               String s = http.setAndGet(u1,pair1);
+                               ls = http.parserRank(s);
+
+                               mHandler.sendMessage(msg);
+
+                           }
+                       }).start();
 
 //
 //                       PopupWindow popupWindow = new PopupWindow(view1, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -132,21 +155,37 @@ public class NearbyActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         SDKInitializer.initialize(getApplicationContext());
         setContentView(R.layout.activity_nearby);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         findView();
         setOnClick();
         initBaiduMap();
         //初始化百度定位客户端
         initMyLocation();
-
+//        setMarkerOnClick();
 
     }
+
+//    private void setMarkerOnClick() {
+//        mBaiduMap.setOnMarkerClickListener(new BaiduMap.OnMarkerClickListener() {
+//            @Override
+//            public boolean onMarkerClick(Marker marker) {
+//                Bundle bundle = marker.getExtraInfo();
+//                MarkerInfoUtil info = (MarkerInfoUtil)bundle.getSerializable("info");
+//                Log.e("+++++",info.getShop_address());
+//                Log.e("+++++",info.getShop_id());
+//                Log.e("+++++",info.getShop_name());
+//                Log.e("+++++",info.getShop_num());
+//                return true;
+//            }
+//        });
+//    }
 
     /**
      * 设置点击事件
      */
     private void setOnClick() {
         rank_back.setOnClickListener(mListener);
-//        rank_menu.setOnClickListener(mListener);
+        rank_menu.setOnClickListener(mListener);
 //        clear.setOnClickListener(mListener);
 //        mine.setOnClickListener(mListener);
 //        text.setOnClickListener(mListener);
@@ -158,7 +197,7 @@ public class NearbyActivity extends AppCompatActivity {
      */
     private void findView() {
         rank_back = (ImageButton)findViewById(R.id.rank_back);
-        rank_menu = (ImageButton)findViewById(R.id.rank_menu);
+        rank_menu = (Button)findViewById(R.id.rank_menu);
 //        view1 = LayoutInflater.from(NearbyActivity.this).inflate(R.layout.near_pop,null);
 //        clear = (TextView) view1.findViewById(R.id.id_map_clear);
 //        mark = (TextView) view1.findViewById(R.id.id_map_mark);
@@ -192,8 +231,8 @@ public class NearbyActivity extends AppCompatActivity {
                             Httpss http = new Httpss();
                             NameValuePair pair = new BasicNameValuePair("content",s1);
                             NameValuePair pair1 = new BasicNameValuePair("city",Utils.city);
-                            String s = http.setAndGet(u,pair,pair1);
-                            ls = http.parser(s);
+                            String s = http.setAndGet(u1,pair,pair1);
+                            ls = http.parserRank(s);
                             Log.e("String",s+ls.size());
                             msg.what = 1;
 
@@ -216,46 +255,81 @@ public class NearbyActivity extends AppCompatActivity {
      */
     private void setAdd(String s) {
 
+
         GeoCoder geoCoder = GeoCoder.newInstance();
+        OnGetGeoCoderResultListener listener = new OnGetGeoCoderResultListener() {
+            @Override
+            public void onGetReverseGeoCodeResult(ReverseGeoCodeResult result) {
+                if (result == null || result.error != SearchResult.ERRORNO.NO_ERROR) {
+                    // 没有检测到结果
+                    Toast.makeText(NearbyActivity.this, "抱歉，未能找到结果",
+                            Toast.LENGTH_LONG).show();
+                }
+                Toast.makeText(NearbyActivity.this,
+                        "位置：" + result.getAddress(), Toast.LENGTH_LONG)
+                        .show();
+            }
+
+            // 地理编码查询结果回调函数
+            @Override
+            public void onGetGeoCodeResult(GeoCodeResult result) {
+                if (result == null || result.error != SearchResult.ERRORNO.NO_ERROR) {
+                    // 没有检测到结果
+                    Log.e("+++++ADD","失败");
+                }
+                Log.e("+++++++++++",result.getLocation()+"");
+                latLng = result.getLocation();
+                Log.e("latLng",latLng+"");
+                addMarkerOverlay(latLng);
+
+
+            }
+        };
+        geoCoder.setOnGetGeoCodeResultListener(listener);
         GeoCodeOption GeoOption = new GeoCodeOption();
         GeoOption.city(Utils.city);
         GeoOption.address(s);
         geoCoder.geocode(GeoOption);
-        geoCoder.setOnGetGeoCodeResultListener(listener);
+//        geoCoder.destroy();
+
+
 
 
     }
 
-    /**
-     * 设置监听
-     */
-    OnGetGeoCoderResultListener listener = new OnGetGeoCoderResultListener() {
-        // 反地理编码查询结果回调函数
-
-        @Override
-        public void onGetReverseGeoCodeResult(ReverseGeoCodeResult result) {
-            if (result == null || result.error != SearchResult.ERRORNO.NO_ERROR) {
-                // 没有检测到结果
-                Toast.makeText(NearbyActivity.this, "抱歉，未能找到结果",
-                        Toast.LENGTH_LONG).show();
-            }
-            Toast.makeText(NearbyActivity.this,
-                    "位置：" + result.getAddress(), Toast.LENGTH_LONG)
-                    .show();
-        }
-
-        // 地理编码查询结果回调函数
-        @Override
-        public void onGetGeoCodeResult(GeoCodeResult result) {
-            Log.e("result",result.toString()+"1");
-            if (result == null || result.error != SearchResult.ERRORNO.NO_ERROR) {
-                // 没有检测到结果
-                Log.e("+++++ADD","失败");
-            }
-            addMarkerOverlay(result.getLocation());
-
-        }
-    };
+//    /**
+//     * 设置监听
+//     */
+//    OnGetGeoCoderResultListener listener = new OnGetGeoCoderResultListener() {
+//        // 反地理编码查询结果回调函数
+//
+//        @Override
+//        public void onGetReverseGeoCodeResult(ReverseGeoCodeResult result) {
+//            if (result == null || result.error != SearchResult.ERRORNO.NO_ERROR) {
+//                // 没有检测到结果
+//                Toast.makeText(NearbyActivity.this, "抱歉，未能找到结果",
+//                        Toast.LENGTH_LONG).show();
+//            }
+//            Toast.makeText(NearbyActivity.this,
+//                    "位置：" + result.getAddress(), Toast.LENGTH_LONG)
+//                    .show();
+//        }
+//
+//        // 地理编码查询结果回调函数
+//        @Override
+//        public void onGetGeoCodeResult(GeoCodeResult result) {
+//            if (result == null || result.error != SearchResult.ERRORNO.NO_ERROR) {
+//                // 没有检测到结果
+//                Log.e("+++++ADD","失败");
+//            }
+//            Log.e("+++++++++++",result.getLocation()+"");
+//            latLng = result.getLocation();
+//            Log.e("latLng",latLng+"");
+////            addMarkerOverlay(latLng);
+//
+//
+//        }
+//    };
 
 
     /**
@@ -352,20 +426,23 @@ public class NearbyActivity extends AppCompatActivity {
 
     /**
      * 添加标注覆盖物
-     * @param ll
+     * @param
      *
      */
-    private void addMarkerOverlay(LatLng ll) {
-        Log.e("ll",ll.toString());
+    private void addMarkerOverlay(LatLng l) {
         //定义Marker坐标点
-        BitmapDescriptor bitmap = BitmapDescriptorFactory.fromResource(R.drawable.marker);
-        OverlayOptions options = new MarkerOptions()
-                .position(ll)
-                .draggable(false)
-                .title("test")
-                .icon(bitmap);
-        //在地图上添加marker并显示
-        Marker marker = (Marker) mBaiduMap.addOverlay(options);
+
+
+            BitmapDescriptor bitmap = BitmapDescriptorFactory.fromResource(R.drawable.marker);
+            OverlayOptions options = new MarkerOptions()
+                    .position(l)
+                    .draggable(false)
+                    .title("test")
+                    .icon(bitmap);
+            //在地图上添加marker并显示
+            Marker marker = (Marker) mBaiduMap.addOverlay(options);
+
+
 
     }
 

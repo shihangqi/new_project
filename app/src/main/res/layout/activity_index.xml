@@ -5,8 +5,8 @@
               android:layout_height="match_parent"
               android:background="#ffffff"
               android:orientation="vertical"
+              android:layout_marginTop="20dp"
               tools:context="com.example.lenovo.inequalitysign.ui.Index">
-
 
     <LinearLayout
         android:layout_weight="1.5"

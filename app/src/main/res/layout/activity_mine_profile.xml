@@ -11,6 +11,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="@color/all"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="20dp">
+
+            </LinearLayout>
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -30,7 +40,7 @@
                 android:background="@drawable/back"
                 android:id="@+id/mine_profileB1"/>
         </RelativeLayout>
-
+</LinearLayout>
         <RelativeLayout
             android:id="@+id/RlayProfileHead"
             android:background="@android:color/white"

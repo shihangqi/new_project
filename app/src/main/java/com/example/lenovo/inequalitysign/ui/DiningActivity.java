@@ -10,6 +10,7 @@ import android.os.Message;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -54,9 +55,7 @@ public class DiningActivity extends Activity implements SwipeRefreshLayout.OnRef
                     intent.setClass(DiningActivity.this, DiningInformationActivity.class);
                     intent.putExtra("Context","DiningActivity");
                     intent.putExtra("Name",ls.get(i).getName());
-
                     intent.putExtra("Id",ls.get(i).getShop_id());
-
                     startActivityForResult(intent,i);
                 }
             });
@@ -117,6 +116,7 @@ public class DiningActivity extends Activity implements SwipeRefreshLayout.OnRef
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dining);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         findView();
         setOnClick();
         setDefault();
@@ -199,7 +199,7 @@ public class DiningActivity extends Activity implements SwipeRefreshLayout.OnRef
             switch (msg.what)
             {
                 case REFRESH_COMPLETE:
-                    Toast.makeText(DiningActivity.this,"刷新成功",Toast.LENGTH_SHORT).show();
+      Toast.makeText(DiningActivity.this,"刷新成功",Toast.LENGTH_SHORT).show();
                     mSwipeLayout.setRefreshing(false);
                     break;
 

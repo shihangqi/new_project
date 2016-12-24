@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import android.view.WindowManager;
 import android.widget.Button;
 
 import android.widget.ImageButton;
@@ -239,40 +240,13 @@ public class DiningInformationActivity extends AppCompatActivity {
                     adb.setPositiveButton("确定", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-
-                            if(content.equals("HomeFragment")){
-                                Utils.flag =1;
-                                Intent i2 = new Intent();
-                                i2.setClass(DiningInformationActivity.this,MainActivity.class);
-                                startActivity(i2);
-                            }else if(content.equals("MineOrderActivity")){
-                                Intent i4 = new Intent();
-                                i4.setClass(DiningInformationActivity.this,MineOrderActivity.class);
-                                startActivity(i4);
-                            } else{
-                                Intent i3 = new Intent();
-                                i3.setClass(DiningInformationActivity.this,DiningActivity.class);
-                                startActivity(i3);
-                            }
+                            finish();
                         }
                     });//adb
                     adb.setNegativeButton("取消", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-                            if(content.equals("HomeFragment")){
-                                Utils.flag =1;
-                                Intent i2 = new Intent();
-                                i2.setClass(DiningInformationActivity.this,MainActivity.class);
-                                startActivity(i2);
-                            }else if(content.equals("MineOrderActivity")){
-                                Intent i4 = new Intent();
-                                i4.setClass(DiningInformationActivity.this,MineOrderActivity.class);
-                                startActivity(i4);
-                            } else{
-                                Intent i3 = new Intent();
-                                i3.setClass(DiningInformationActivity.this,DiningActivity.class);
-                                startActivity(i3);
-                            }
+                            finish();
                         }
                     });//adb
                     adb.create();
@@ -355,8 +329,13 @@ public class DiningInformationActivity extends AppCompatActivity {
                         finish();
                     }else if(start.equals("MineOrderActivity")) {
                         Intent i4 = new Intent();
-                        i4.setClass(DiningInformationActivity.this,MineOrderActivity.class);
+                        i4.setClass(DiningInformationActivity.this, MineOrderActivity.class);
                         startActivity(i4);
+                        finish();
+                    }else if(start.equals("CommentConent")){
+                        Intent i6 = new Intent();
+                        i6.setClass(DiningInformationActivity.this,CommentConent.class);
+                        startActivity(i6);
                         finish();
                     }
                     else{
@@ -416,6 +395,7 @@ public class DiningInformationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dining_information);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         finView();
         setOnClick();
         init();

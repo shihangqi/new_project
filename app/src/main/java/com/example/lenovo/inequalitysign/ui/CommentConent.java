@@ -9,6 +9,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -36,6 +38,17 @@ public class CommentConent extends AppCompatActivity implements SwipeRefreshLayo
             Log.e("Comment",ls.toString());
             CommentAdapter adapter = new CommentAdapter(CommentConent.this,ls);
             lv.setAdapter(adapter);
+            lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                    //设置点击事件
+                    Intent intent = new Intent();
+                    intent.setClass(CommentConent.this, DiningInformationActivity.class);
+                    intent.putExtra("Context","CommentConent");
+                    intent.putExtra("Id",ls.get(i).getShop_id());
+                    startActivityForResult(intent,i);
+                }
+            });
         }
     };
 
@@ -43,7 +56,7 @@ public class CommentConent extends AppCompatActivity implements SwipeRefreshLayo
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_comment_conent);
-
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         findView();
         setOnClick();
         getContent();
