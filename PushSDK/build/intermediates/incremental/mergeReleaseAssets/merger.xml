@@ -1,2 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
+<<<<<<< HEAD
+<merger version="3"><dataSet config="main"><source path="F:\new_project\new_project\PushSDK\assets"/><source path="F:\new_project\new_project\PushSDK\build\generated\assets\shaders\release"/></dataSet><dataSet config="release"><source path="F:\new_project\new_project\PushSDK\build-types\release\assets"/></dataSet></merger>
+=======
+<<<<<<< HEAD
+<merger version="3"><dataSet config="main"><source path="D:\study\android_studio\project1\new_project\PushSDK\assets"/><source path="D:\study\android_studio\project1\new_project\PushSDK\build\generated\assets\shaders\release"/></dataSet><dataSet config="release"><source path="D:\study\android_studio\project1\new_project\PushSDK\build-types\release\assets"/></dataSet></merger>
+=======
 <merger version="3"><dataSet config="main"><source path="F:\new_project\PushSDK\assets"/><source path="F:\new_project\PushSDK\build\generated\assets\shaders\release"/></dataSet><dataSet config="release"><source path="F:\new_project\PushSDK\build-types\release\assets"/></dataSet></merger>
+>>>>>>> ff3da5e9f7f3d5e03ece5ca428b0a4261b22c0f4
+>>>>>>> c58249a09048c89f277f30ca71ea0b631813a83e
